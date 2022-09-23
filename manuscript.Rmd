@@ -66,9 +66,6 @@ Conclusion
 Introduction
 ============
 
-<!-- 
-FYI: utmanat volymkraven, de är motstridiga med kravet "Innehåller endast sådan information som är nödvändig för att förstå och motivera studiens syfte och metodik i stort"
--->
 
 <!-- Explain the scientific background and rationale for the
 investigation being reported. End by stating the aim or specific
