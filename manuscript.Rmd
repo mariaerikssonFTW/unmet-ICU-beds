@@ -75,21 +75,30 @@ should not be longer than 1-1.5 pages, typically 4-5 paragraphs, each
 
 Trauma globally and in India
 ----------------------------
-Trauma is a substantial global health problem that disproportionately affects low and middle-income countries (LMIC), resulting in significant mortality and morbidity @traumaLMIC. Despite having only 1% of the global vehicle fleet, a disproportionate 10% of global traffic casualties occur in India @indiantrauma. The annual mortality from injury in India amount to one million casualties @onemilliondead. Half of trauma mortality in India occur in-hospital, and in-hospital trauma mortality in Indian hospitals was double that of high-income countries @indiantrauma. 
+Trauma is a substantial global health problem that disproportionately affects low and middle-income countries (LMIC), resulting in significant mortality and morbidity @traumaLMIC. Despite having only 1% of the global vehicle fleet, a disproportionate 10% of global traffic casualties occur in India @indiantrauma. The annual mortality from injury in India amount to one million casualties @onemilliondead. Half of trauma mortality in India occur in-hospital. There is no national trauma registry in India, but isolated studies have shown that in-hospital mortality within 30 days of hospitalization is higher than similarly injured patients in HIC hospitals @indiantrauma. 
 
 Mortality due to accidents in India amounted to 421 104 people in 2019, which is 31.5 per 100.000 inhabitants. The traumatic mechanisms of injury from accidents covered in this thesis are road accidents, falls, assault and burns and these make up about half of the accident mortality @nationalcrime. 
 
 Trauma is a main cause of mortality and morbidity to otherwise healthy and young individuals, and dispropotionately affect this demographic. Most casualties affected the age group 30-45 years, followed by the age bracket 18-30 years @nationalcrime. People in this demographic are also oftentimes the primary or sole breadwinners for their families. Therefore the detrimental impact of trauma go beyond mortality or substantial loss of disease-free years of life for the affected individuals, it also carries a considerable financial and social harm on their family members and communities @traumaLMIC @nationalcrime
 
-Health care professionals in many LMIC testify that their medical assessment oftentimes is that a trauma patient should be admitted to the ICU, but are not because such resources are scarce, overloaded and unavailable. Their medical judgement is that the lives of these patients were salvageable, and that these patients died as a direct result of not being admitted to the ICU @stuffLMICdoctorssay. Globally, an estimated two million lives could be saved annually, if the appropriate and timely trauma care provided by hospitals in many high-income countries were available and provided in low to-middle-income countries (LMICs) @livessaved
+Health care professionals in many LMIC testify that their medical assessment oftentimes is that a trauma patient should be admitted to the ICU, but are not because such resources are scarce, overloaded and unavailable. Their medical judgement is that the lives of these patients were salvageable, and that these patients died as a direct result of not being admitted to the ICU @stuffLMICdoctorssay. Globally, an estimated two million lives could be saved annually, if the appropriate and timely trauma care provided by hospitals in many high-income countries were available and provided in low to-middle-income countries (LMICs) @indiantrauma
 
 A diverse mix of public, for-profit and not-for-profit private actors provide health services in India, where private providers dominate. According to a WHO 2022 report, India has 76 709 non-ventilator supported and 39 476 ventilator-supported ICU beds @ICUbeds. 
+
+<!-- KommentarJohanna: I suggest adding more details about the context in India, the health care system, how common trauma is in India, how many ICU beds there are, why ICU care is important for the trauma population and so on.. 
+-->
+<!-- KommentarMartin:You can definitely write more about the health care system in India, the trauma system, the availability of ICUs, how common ICU care is in trauma, why trauma patients need ICU care, how long they stay, outcomes etc -->
+
+<!-- Respons: Datan som står att finna om ICU vård resurserna i Indien är lite spretig, men enligt WHO så är den runt 8 per 100.000 och andra trovärdiga bedömare är där nånstans +- 50%. Det är i paritet med Sverige? Förklaringen står kanske att finna i att definitionen av en ICU bed inte är vedertagen men trots mycket läsande innantill har jag inte kunnat avfärda eller förklara detta. 
+Och det lyfter frågan: det finns lite olika levels av ICU beds, vilken är det vi menar? Eftersom statistiken på ICU resurser är dåligt differentierad och TITCO datasetet inte specificerar det, ska frågan undvikas för att inte öka komplexiteten för sig själv? -->
 
 Methods to examine trauma care and ensure equivalence
 -----------------------------------------------------
 In order to improve and ensure equivalence of intra-hospital care, trauma quality improvement programs (TQIP) have been developed. The pilot and most notable example is the TQIP developed by the American College of Surgeons ACS. Since the implementation of the ACS pilot, TQIP has evolved to a broad term that include many kinds of processes to improve the quality of trauma care, such as mortality and morbidity conferences, using audit filters or comparing risk adjusted outcomes over time and between centres. The aim is to find discrepancies in treatment for patients presenting with similar conditions. TQIPs aim to ensure patients get equivalent care within and across hospitals, to benchmark performance of health care providers versus their peers and to improve trauma care by developing best practice guidelines @tqip. 
 
 TQIP often originate in high-income countries (HIC), they are either not applicable nor easily transferred to the hospital conditions of LMIC @frailty @gunshot  @onemilliondead. For trauma patients, there exist significant structural differences between HIC and LMIC. These differences are in factors such as injury mechanisms and severity, health care resources as well as patient make-up @frailty @indiantrauma @traumaLMIC @onemilliondead. These differences make a direct transferral of HIC TQIP models onto LMIC irrelevant or misleading and there is a need to develop TQIP assessment applicable to local conditions.
+
+<!-- Ni vil båda flytta fokus från detta, och jag förstår inte riktigt varför det är med kopplingen är luddig. Är det för att säga: det finns TQIPs som ger en fingervisning om hur ICU ska dimensioneras, bestyckas, bemannas och bedrivas. Men det finns inga färdiga TQIPs som kan användas för att kvantifiera ICU-bristen i Indien och vi tror det är vanskligt att använda de befintliga eftersom de skapats under så olika förhållanden. Och därför måste vi börja från noll? -->
 
 Knowlege gap
 ------------
@@ -176,6 +185,7 @@ In addition, 47 patient data were randomly deleted to prevent identification via
 Age
 Very old patients are few, they have been grouped together to prevent identification via the age parameter.
 
+<!-- Kommentar: inför datatvätten, hur vill vi göra med  småbarnen? -->
 
 Text based input
 1% of the text-based inputs in ICD code fields and examination or operation findings were randomly deleted to obstruct identification by this variable. 
@@ -226,7 +236,11 @@ Because the purpose of this thesis is to statistically assess how many patients 
 
 Hospitals with trauma wards could have lower admission criteria to the ICU than hospitals with no trauma ward. Because examining admission criteria to the ICU is part of the analysis it may be necessary to examine and address this bias by comparing ICU admitted patients between hospitals. Propensity score matching can be used to identify differences in ICU admission criteria between hospitals and find patients that were admitted but need not have been. These patients are excluded from predictor selection to reduce this bias. This is part of the development and training of the PSM model. 
 
+<!--  
 Propensity score matching in itself introduces a source of bias from unfit assumptions. The terminology and potential sources of bias are explained chapter Study Design. In choosing predictor variables the researcher could introduce an overdetermined set and a self-fulfilling prophecy. For this reason the dataset shall be randomly split into two parts of 40% and 60% of the patients. The 60% shall be used to produce the propensity score matching, and the remaining 40% shall be used to verify it. 
+-->
+
+<!-- Fråga: vad är distinktionen mellan bias och error med PSM egentligen? är det error eller bias som uppstår om jag ex skulle välja ICU-sjukhuset som prediktor? Är det bias att ha för generösa calipers? Som jag förstår finns risk att få vilket resultat som helst med val metod för matching och limitations ? Och att jag väljer calipers som producerawr resultat som jag tycker känns "rimliga"? Ex jag kanske väntar mig att ICU bristen är 20% för jag föreställer mig att de patienter jag söker är de som är "på ribban" alltså de matchar de "friskaste" 20% av dem som var på ICU. Det känns mindre sannolikt att en patient inte fått ICU om den är jämförbar med någon som var en av de mest skadade 20% på ICU.   -->
 
 Study size 
 ----------
@@ -250,20 +264,21 @@ Translated into this context this means that in this data set exist a selection 
 
 The propensity score model is developed using the Training Data and tested using the Validation Data. The workflow contain a series of steps and the work flow should understood as linear, but iterative. The output of each step is the input for later steps. Therefore the output of the last step reflect the cumulative error from unfit assumptions made the second and fourth step. The output is tested against Validation Data. By reverting back and adjusting assumptions in an iterative process, the model is continuously improved and the accuracy and validity is improved. 
 
+<!-- ÅTERKOM inte klart bara gissat -->
+
 The first step of PSM is to randomly split the data set into two parts, 60% and 40%. The 60% part is a Training Part used to delvelop and train the PSM, and the 40% part is the Validation Part. This is done because the inherent bias of the PSM method described in chapter Bias. Training Data is used in steps 2-4 and the output is then validated using Validation Data. 
 
-Second step is to identify predictor variables: covariates most predictive of the dependent variable, as described in chapter Predictor selection. In this context it means to first identify the conditions and medical interventions received that correlate best to being admitted to ICU care. This selection is based on clinical experience as well as analysis of the Training Data. In the data analysis all properties of the patients that were sent to the ICU will be compared to the patents who did not, in order to identify properties that distinguishes this cohort., Familiarity with the collection of source data is crucial to minimize the risk to choose irrelevant predictors and introduce error.
+Second step is to identify predictor variables: covariates most predictive of the dependent variable, as described in chapter Predictor selection. In this context it means to first identify the conditions and medical interventions received that correlate best to being admitted to ICU care. This selection is based on clinical experience as well as analysis of the Training Data. In the data analysis all properties of the patients that were sent to the ICU will be compared to the patents who did not, in order to identify properties that distinguishes this cohort. Familiarity with the collection of source data is crucial to minimize the risk to choose irrelevant predictors and introduce error.
 
 Third step is to build a standard multivariable logistic regression model with ICU care as the outcome and the predictors selected in the second step as independent variables. This model is used to calculate the standard variable propensity score for all patients. The propensity score determines the likelihood that a patient will receive ICU care, given their condition. 
 
 Fourth step is PSM. In PSM members of the subset that did not get ICU care but had similar predictors - and therefore similar propensity scores - as the subgroup that did get ICU care, are matched to patients who did go to the ICU. There are a few different ways to perform this matching but they are all imperfect because propensity scores are unique and perfect matching is unattainable There are control mechanisms and limitations but a risk of applying too fix or too loose matching criteria the outcome could inadvertedly vastly under- or overestimate the  need of ICU beds remain.  
-
-The same procedure is repeated on the Validation Data using the same predictors and the same matching criteria, and this should produce a cohort comparable to the one trom Training Data. 
- 
+The same procedure is repeated on the Validation Data using the same predictors and the same matching criteria, and this should produce a cohort comparable to the one trom Training Data. The proportion of this subset versus the subset that did receive ICU care is also the proprtion of ICU bed shortage. If, for every patient that did receive ICU care, there was another patient with similar predictors that wasn’t admitted due to scarcity of ICU resources, that would mean the ICU resources are 50% of what they ought to be. 
 
 (b) Describe any methods used to examine subgroups and interactions
 
 The two subgroups were patients admitted to the ICU, and the patients who were not. Admission to the iCU is a binary yes or no, length of stay has not been taken into Consideration.
+
 
 Missing Data
 -------------
@@ -305,13 +320,14 @@ For the qualitative data, the propensity of each parameter to get a patient admi
 
 Some qualitative parameters such as intubation are recorded after both 1 and 24 hours, if applicable. The record at 1 hour has two options indicating the patient is intubated, "before arrival" meaning the patient was intubated at a their first health care facility and "yes" meaning the patient was intubated within the first hour. Because these two options both mean the patient was intubated after 1 hour, an aggregate parameter has been created for this, and a further parameter "intubated after 24 hours" that summarize the patients who were intubated on arrival, the patients who were intubated within the first hour and the patients who were intubated between 1 and 24 hours. 
 
-FRÅGA: det finns pat som är intuberade "before arrival" men som inte är noterade som transferred från ett annat sjukhus. De har kommit med motor rickshaw. Är det rimligt att anta att de är transferred från ett sjukhus iallafall för vem har annars intuberat dessa patienter?
+<!--
+FRÅGA datatvätt: det finns pat som är intuberade "before arrival" men som inte är noterade som transferred från ett annat sjukhus. De har kommit med motor rickshaw. Är det rimligt att anta att de är transferred från ett sjukhus iallafall för vem har annars intuberat dessa patienter?
+-->
 
 <!-- 
-The parameter "taken to the operation theatre" is a heterogenous qualitative parameter, where only a small proportion of patients had been taken within the first hour but a substantial proportion of patients had been taken to the operation theatre after 24 hours. There is a need to consider the free text field operation type to filter out for operation types with higher propensity for ICU admission from operations with lower propensity. 
+The parameter "taken to the operation theatre" is a heterogenous qualitative parameter, where only a small proportion of patients had been taken within the first hour but a substantial proportion of patients had been taken to the operation theatre after 24 hours and many of these operations are lower priority orthopedic operations with no correlation to ICU admission. There is a need to consider the free text field operation type to filter out for operation types with higher propensity for ICU admission from operations with lower propensity. 
+FRÅGA prediktorval: borde man ta operation within 24 hours och komplettera med text based operationstyp?
 -->
-The parameter "taken to the operation theatre" is a heterogenous qualitative parameter, and operations performed in the first hour tend to be more acute than operations performed within the first day of hospitalization. There is a need to consider the free text field operation type to filter out for operation types with higher propensity for ICU admission from operations with lower propensity. 
-FRÅGA: borde man ta operation within 24 hours och komplettera med text based operationstyp?
 
 The free hand text based information available contain information about examination findings, surgery types and ICD codes. Many of these data fields contain crucial information about patient condition, but also present a few challenges as described in chapter: Variables and data sources/measurements. These text based data fields will be examined for entries that are more prevalent in the ICU cohort than the non-ICU cohort, and combined with clinical experience to select suitable predictors. 
 
