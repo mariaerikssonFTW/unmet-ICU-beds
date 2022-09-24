@@ -75,22 +75,23 @@ should not be longer than 1-1.5 pages, typically 4-5 paragraphs, each
 
 Trauma globally and in India
 ----------------------------
-Trauma is a substantial global health problem that disproportionately affects low and middle-income countries (LMIC), resulting in significant mortality and morbidity @traumaLMIC. Despite having only 1% of the global vehicle fleet, a disproportionate 10% of global traffic casualties occur in India @indiantrauma. The annual mortality from injury in India amount to one million casualties @onemilliondead. Half of trauma mortality in India occur in-hospital. There is no national trauma registry in India, but isolated studies have shown that in-hospital mortality within 30 days of hospitalization is higher than similarly injured patients in HIC hospitals @indiantrauma. 
+Trauma is a substantial global health problem that disproportionately affects low and middle-income countries (LMIC), resulting in significant mortality and morbidity @traumaLMIC. 4.8 million people die from trauma annually, 90% are in LMIC and 20% in India alone @onemilliondead. Despite having only 1% of the global vehicle fleet, a disproportionate 10% of global traffic casualties occur in India @indiantrauma. Half of trauma mortality in India occur in-hospital. There is no national trauma registry in India, but isolated studies have shown that in-hospital mortality within 30 days of hospitalization is higher than similarly injured patients in HIC hospitals @indiantrauma. Globally, an estimated two million lives could be saved annually, if the appropriate and timely trauma care provided by hospitals in many high-income countries were available and provided in low to-middle-income countries (LMICs) @indiantrauma. 
+
+Health care professionals in many LMIC testify that their medical assessment oftentimes is that a trauma patient should be admitted to the ICU, but are not because such resources are scarce, overloaded and unavailable. Their medical judgement is that the lives of these patients were salvageable, and that these patients died as a direct result of not being admitted to the ICU @stuffLMICdoctorssay. 
 
 Mortality due to accidents in India amounted to 421 104 people in 2019, which is 31.5 per 100.000 inhabitants. The traumatic mechanisms of injury from accidents covered in this thesis are road accidents, falls, assault and burns and these make up about half of the accident mortality @nationalcrime. 
 
 Trauma is a main cause of mortality and morbidity to otherwise healthy and young individuals, and dispropotionately affect this demographic. Most casualties affected the age group 30-45 years, followed by the age bracket 18-30 years @nationalcrime. People in this demographic are also oftentimes the primary or sole breadwinners for their families. Therefore the detrimental impact of trauma go beyond mortality or substantial loss of disease-free years of life for the affected individuals, it also carries a considerable financial and social harm on their family members and communities @traumaLMIC @nationalcrime
 
-Health care professionals in many LMIC testify that their medical assessment oftentimes is that a trauma patient should be admitted to the ICU, but are not because such resources are scarce, overloaded and unavailable. Their medical judgement is that the lives of these patients were salvageable, and that these patients died as a direct result of not being admitted to the ICU @stuffLMICdoctorssay. Globally, an estimated two million lives could be saved annually, if the appropriate and timely trauma care provided by hospitals in many high-income countries were available and provided in low to-middle-income countries (LMICs) @indiantrauma
-
-A diverse mix of public, for-profit and not-for-profit private actors provide health services in India, where private providers dominate. According to a WHO 2022 report, India has 76 709 non-ventilator supported and 39 476 ventilator-supported ICU beds @ICUbeds. 
+A diverse mix of public, for-profit and not-for-profit private actors provide health services in India, where private providers dominate. According to a WHO 2022 report, India has 76 709 non-ventilator supported and 39 476 ventilator-supported ICU beds @ICUbeds. Because of the type and severity of injuries, ICU resources are often essential in care of trauma patients @titco.
 
 <!-- KommentarJohanna: I suggest adding more details about the context in India, the health care system, how common trauma is in India, how many ICU beds there are, why ICU care is important for the trauma population and so on.. 
 -->
 <!-- KommentarMartin:You can definitely write more about the health care system in India, the trauma system, the availability of ICUs, how common ICU care is in trauma, why trauma patients need ICU care, how long they stay, outcomes etc -->
 
-<!-- Respons: Datan som står att finna om ICU vård resurserna i Indien är lite spretig, men enligt WHO så är den runt 8 per 100.000 och andra trovärdiga bedömare är där nånstans +- 50%. Det är i paritet med Sverige? Förklaringen står kanske att finna i att definitionen av en ICU bed inte är vedertagen men trots mycket läsande innantill har jag inte kunnat avfärda eller förklara detta. 
-Och det lyfter frågan: det finns lite olika levels av ICU beds, vilken är det vi menar? Eftersom statistiken på ICU resurser är dåligt differentierad och TITCO datasetet inte specificerar det, ska frågan undvikas för att inte öka komplexiteten för sig själv? -->
+<!-- Respons: Ja det är magert men det finns en orsak till det, jag har undvikit detta av två skäl
+ 1.Datan som står att finna om ICU vård resurserna i Indien är lite spretig, men enligt WHO så är den runt 8 per 100.000 och andra trovärdiga bedömare är där nånstans +- 50%. Det är i paritet med Sverige? Förklaringen står kanske att finna i att definitionen av en ICU bed inte är vedertagen men trots mycket läsande innantill har jag inte kunnat avfärda eller förklara detta. 
+2. pkt 1 lyfter en fråga som ökar komplexiteten: det finns lite olika levels av ICU beds, vilken är det vi menar? Eftersom statistiken på ICU resurser är dåligt differentierad och TITCO datasetet inte specificerar det, ska frågan undvikas för att inte öka komplexiteten för sig själv? -->
 
 Methods to examine trauma care and ensure equivalence
 -----------------------------------------------------
@@ -156,6 +157,7 @@ of controls per case -->
 
 <!-- Cross-sectional study: Give the eligibility criteria, and the
 sources and methods of selection of participants -->
+
 Ethical considerations
 ----------------------
 
@@ -180,12 +182,10 @@ Dates recorded in the TITCO-I data set were shifted using a random offset of som
 
 It is important to note that all patients have sequence numbers that corresponded to the chronological order in which they arrived at any of the participating hospitals, and that sequence number has been kept intact. Keeping this sequence number variable intact allows for many useful operations such as examinations of trends in the data, while it is not possible to undo the date randomization by the sequence number variable, such an equation system is still underdetermined. Unfortunately this means it is also not possible to reconstruct the patient volumes at any given hospital on any given day and from that rate of resource engagement. Nor is it possible to distinguish if patients who were made to wait for their first assessment were so because their injuries were deemed as less severe or if it was because health care staff was overwhelmed which is an important distinction.
 
-In addition, 47 patient data were randomly deleted to prevent identification via the sequence number variable.
-
 Age
 Very old patients are few, they have been grouped together to prevent identification via the age parameter.
 
-<!-- Kommentar: inför datatvätten, hur vill vi göra med  småbarnen? -->
+In addition, 47 patient data were randomly deleted to prevent identification via the sequence number variable.
 
 Text based input
 1% of the text-based inputs in ICD code fields and examination or operation findings were randomly deleted to obstruct identification by this variable. 
@@ -195,7 +195,7 @@ Text based input
 Variables and data sources/measurements
 ---------------------------------------
 
-<!-- Clearly define all outcomes, exposures, predictors, potential
+ Clearly define all outcomes, exposures, predictors, potential
 confounders, and effect modifiers. Give diagnostic criteria, if
 applicable. For each variable of interest, give sources of data and
 details of methods of assessment (measurement). Describe comparability
@@ -209,10 +209,6 @@ load("table1_1.rdata")
 
 knitr::kable(table1_1, caption = "Data types collected in the TITCO-I dataset")
 ```
-
-datatvätt:
-FRÅGA: quantitativa variablerna har många NA som jag tror egentligen är NO, ex om pat har haft syrgas vid spO2 mätning. kan jag tänka lite fritt här när det känns uppenbart eller ska jag förankra? också finns det ex obs där numeriska värdet för spO2 saknas men ändå data yes/no om pat fått syrgas och jag vet inte om sån data är meningsfull?
-
 
 The quantitative data include recorded parameters such as vital parameters, lab results, GCS total score and cumulative time in surgery or ICU, if applicable. Measurement or assessment techniques are standardized.  
 
@@ -314,23 +310,15 @@ Clinical experience compels inclusion of vital parameters, irregardless if there
 
 The TITCO-I data set is analyzed mathemathically in pursuit of suitable predictor variables. The data set is divided into two subgroups, the cohort that were admitted to the ICU and the cohort that was not. In comparison between these subgroups, identify variables that distinguishes the former from the latter. The quantitative and qualitative properties were considered separately. 
 
-Mean and standard deviation for the quantitative data is analysed for the ICU and non-ICU cohort respectively. p- and t-values when comparing these cohorts to show if there are any statistically significant differences.
+Mean and standard deviation for the quantitative data is analysed for the ICU and non-ICU cohort respectively. p- and t-values when comparing these cohorts to show if there are any statistically significant differences. It is plausible to construct new variables from quantitative data, such as trends. 
 
-For the qualitative data, the propensity of each parameter to get a patient admitted to the ICU is in relation to the proportion of patients that were admitted to the ICU from the whole TITCO-I data set, about a third. If considerably more than a third of each qualitative parameter are admitted to the ICU, then that parameter is of interest. 
-
-Some qualitative parameters such as intubation are recorded after both 1 and 24 hours, if applicable. The record at 1 hour has two options indicating the patient is intubated, "before arrival" meaning the patient was intubated at a their first health care facility and "yes" meaning the patient was intubated within the first hour. Because these two options both mean the patient was intubated after 1 hour, an aggregate parameter has been created for this, and a further parameter "intubated after 24 hours" that summarize the patients who were intubated on arrival, the patients who were intubated within the first hour and the patients who were intubated between 1 and 24 hours. 
-
-<!--
-FRÅGA datatvätt: det finns pat som är intuberade "before arrival" men som inte är noterade som transferred från ett annat sjukhus. De har kommit med motor rickshaw. Är det rimligt att anta att de är transferred från ett sjukhus iallafall för vem har annars intuberat dessa patienter?
--->
-
-<!-- 
-The parameter "taken to the operation theatre" is a heterogenous qualitative parameter, where only a small proportion of patients had been taken within the first hour but a substantial proportion of patients had been taken to the operation theatre after 24 hours and many of these operations are lower priority orthopedic operations with no correlation to ICU admission. There is a need to consider the free text field operation type to filter out for operation types with higher propensity for ICU admission from operations with lower propensity. 
-FRÅGA prediktorval: borde man ta operation within 24 hours och komplettera med text based operationstyp?
--->
+For the qualitative data, the propensity of each parameter to get a patient admitted to the ICU is in relation to the proportion of patients that were admitted to the ICU from the whole TITCO-I data set, about a third. If considerably more than a third of each qualitative parameter are admitted to the ICU, then that parameter is of interest. It has been relevant to combine qualitative parameters into aggregate qualitative varaibles. For example, the variable intubation at 1 hour has two options indicating the patient is intubated: "before arrival" meaning the patient was intubated at a their first health care facility and "yes" meaning the patient was intubated within the first hour. Because these two options both mean the patient was intubated after 1 hour, an aggregate parameter has been created for this. Because the data set also contain information of whether a patient was intubated within the first and 24th hour the parameter "intubated after 24 hours" were created that summarize the patients who were intubated on arrival, the patients who were intubated within the first hour and the patients who were intubated between 1 and 24 hours. 
 
 The free hand text based information available contain information about examination findings, surgery types and ICD codes. Many of these data fields contain crucial information about patient condition, but also present a few challenges as described in chapter: Variables and data sources/measurements. These text based data fields will be examined for entries that are more prevalent in the ICU cohort than the non-ICU cohort, and combined with clinical experience to select suitable predictors. 
 
+It is also plausible to include aggregate variables, by combining unrelated variables of the same type or across varaible types. Selection and construction of such aggregate parameters to be explored will be based on clinical experience not data analysis. An example of this is the heterogenous qualitative parameter "taken to the operation theatre". Many operation types are strongly correlated to ICU admission - especially if they were performed within the first hour of admission - but most of the operations performed are lower priority orthopedic operations with no correlation to ICU admission. There is a need to combine operation timing and free text fields "operation type" and "intreoperative findings" to filter out operations with higher propensity for ICU admission.
+<!-- FRÅGA prediktorval: borde man ta operation within 24 hours och komplettera med text based operationstyp?
+-->
 
 Results
 =======
