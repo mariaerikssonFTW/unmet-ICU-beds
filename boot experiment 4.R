@@ -441,3 +441,5 @@ return(unmetprop_test) #return unmet
 #bootstrapping
 
 reps <- boot(data=data, statistic=unmet_function, R=3, formula=mpg~disp)
+
+reps
