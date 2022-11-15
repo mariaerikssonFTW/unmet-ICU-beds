@@ -87,8 +87,8 @@ data <- data %>%
                              rr_1 > 9 & rr_1 < 29   ~ 4)) %>%
   
   mutate(rts_rr2 = case_when(rr_2 ==0   ~ 0,
-                             rr_2 < 5   ~ 1,
-                             rr_2 < 9   ~ 2,
+                             rr_2 < 5   ~ 0, # 1, experiment
+                             rr_2 < 9   ~0 , # 2, experiment
                              rr_2 > 29   ~ 3,
                              rr_2 > 9 & rr_2 < 29 ~ 4)) %>%
   
@@ -441,6 +441,6 @@ return(unmetprop_test) #return unmet
 
 #bootstrapping
 
-reps <- boot(data=data, statistic=unmet_function, R=3, formula=mpg~disp)
+reps <- boot(data=data, statistic=unmet_function, R=1000, formula=mpg~disp)
 
 reps
