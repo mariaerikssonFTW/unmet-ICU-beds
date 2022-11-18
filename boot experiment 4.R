@@ -43,15 +43,10 @@ outcome=data %>%
   #här börjar min påbyggnad
   mutate(time_to_first = round(as.numeric(firstsurvey_time-arrival_time , units = "hours"),2))%>%
   mutate(time_between_surveys = round(as.numeric(secondsurvey_time - firstsurvey_time, units = "hours"),2)) %>%
-  #vi tar dessa åt sidan, för vi vill bara göra detta på de som inte är transfererade, eftersom de snurrat förbi ett annat sjukhus blir tiden från injury till arrival missvisande
-  # approach 1, blev kortare
-  # filter(tran %in% c("No"))%>%
-  #   mutate(injury_time_direct = as_datetime(paste0(doi, toi)))  %>%
-  #   mutate(arrival_time_direct = as_datetime(paste0(doar, toar))) %>%
-  #   mutate(firstsurvey_time_direct = as_datetime(paste0(dom_1, tom_1)))
+
   mutate(stillalive_6h = case_when(time_to_death > 6 ~ 1,
                                    time_to_death < 6 ~ 0)) %>%
-  #återkom fatta hur du filtrerar på detta
+
   mutate(delay2 = round(as.numeric(arrival_time-injury_time , units = "hours"),0))%>%
   mutate(delay23 = round(as.numeric(firstsurvey_time-injury_time , units = "hours"),0))%>%
   mutate(delay2ifdirect = case_when(str_detect(tran, "No") & delay2<72 ~ delay2)) # %>%
@@ -74,11 +69,27 @@ data <- data %>%
                               sbp_1 < 89 & sbp_1 !='NA' ~ 3,
                               sbp_1 < 300 & sbp_1 !='NA' ~4)) %>%
   
-  mutate(rts_sbp2 = case_when(sbp_2 ==0 & hr_2<1  ~ 0,
+  mutate(rts_sbp2 = case_when(sbp_2 ==0 & hr_2<1 & sbp_2 !='NA' ~ 0,
                               sbp_2 < 49  & sbp_2 !='NA' ~ 1,
                               sbp_2 < 75  & sbp_2 !='NA' ~ 2,
                               sbp_2 < 89   & sbp_2 !='NA' ~ 3,
                               sbp_2 < 300 & sbp_2 !='NA' ~ 4)) %>%
+  
+  mutate(cat_hr1 = case_when(hr_1 ==0 & sbp_1 <1 & hr_1 !='NA'  ~ 0,
+                             hr_1< 41 & hr_1 !='NA' ~ 1,
+                             hr_1 < 51 & hr_1 !='NA' ~ 3,
+                             hr_1 < 89 & hr_1 !='NA' ~ 4,
+                             hr_1 < 111 & hr_1 !='NA' ~3,
+                             hr_1 < 131 & hr_1 !='NA' ~2,
+                             hr_1 > 131 & hr_1 !='NA' ~1,)) %>%
+  
+  mutate(cat_hr2 = case_when(hr_2 ==0 & sbp_1 <1 & hr_2 !='NA'  ~ 0,
+                             hr_2< 41 & hr_2 !='NA' ~ 1,
+                             hr_2 < 51 & hr_2 !='NA' ~ 3,
+                             hr_2 < 89 & hr_2 !='NA' ~ 4,
+                             hr_2 < 111 & hr_2 !='NA' ~3,
+                             hr_2 < 131 & hr_2 !='NA' ~2,
+                             hr_2 > 131 & hr_2 !='NA' ~1,)) %>%
   
   mutate(rts_rr1 = case_when(rr_1 ==0   ~ 0,
                              rr_1 < 5   ~ 1,
@@ -87,8 +98,8 @@ data <- data %>%
                              rr_1 > 9 & rr_1 < 29   ~ 4)) %>%
   
   mutate(rts_rr2 = case_when(rr_2 ==0   ~ 0,
-                             rr_2 < 5   ~ 0, # 1, experiment
-                             rr_2 < 9   ~0 , # 2, experiment
+                             rr_2 < 5   ~ 0, # 1, måste klumpas ihop för att inte bli för få i en kategori
+                             rr_2 < 9   ~0 , # 2, måste klumpas ihop för att inte bli för få i en kategori
                              rr_2 > 29   ~ 3,
                              rr_2 > 9 & rr_2 < 29 ~ 4)) %>%
   
@@ -255,18 +266,7 @@ tableone::CreateCatTable(data = train_data, vars = cat_variables, strata = "trea
 look_cont1=tableone::CreateContTable(data = test_data, vars = cont_variables, strata = "treated_icu")
 look_cat1=tableone::CreateCatTable(data = test_data, vars = cat_variables, strata = "treated_icu")
 
-#nu lägger vi på själva analysen. Vi har alla nya skapade parametrar exkl ambulansransporten med
-
-predictors=data
-#"rts_sbp1","rts_sbp2","rts_rr1","rts_rr2","tranclass","bl_rec","sc_hi","gcs_v_1_class","gcs_m_1_class","gcs_e_1_class","gcs_v_2_class","gcs_m_2_class","gcs_e_2_class", "spO2_1_wO2","spO2_1_woO2","spO2_2_wO2","spO2_2_woO2"
-
-#samt de gamla
-#..... kolla i saker jag vill ta upp
-#died, NISS, Operation 1a timmen, Mode of injury, transfer, age sex
-
-#predictors=data.frame(data["rts_sbp1”],data[”rts_sbp2”],data[”rts_rr1”],data[”rts_rr2”],data[”tranclass”],data[”bl_rec”],data[”sc_hi”],data[”gcs_v_1_class”],data[”gcs_m_1_class”],data[”gcs_e_1_class”],data[”gcs_v_2_class”],data[”gcs_m_2_class”],data[”gcs_e_2_class”], data["spO2_1_wO2"],data[”spO2_1_woO2”],data[”spO2_2_wO2”],data[”spO2_2_woO2"],data["NISS"],data["age"],data["sex"],data["age"],data["op_1"],data["moi"], data["tran"],data["died"])
-
-predictors = data  %>% select("rts_sbp1","rts_sbp2","rts_rr1","rts_rr2","tranclass","bl_rec","sc_hi","gcs_v_1_class","gcs_m_1_class","gcs_e_1_class","gcs_v_2_class","gcs_m_2_class","gcs_e_2_class", "spO2_1_wO2","spO2_1_woO2","spO2_2_wO2","spO2_2_woO2", "niss", "age", "sex", "age", "ot_1", "moi", "tran", "died","spO2_1_cat","spO2_2_cat","died" )
+predictors = data  %>% select("rts_sbp1","rts_sbp2","rts_rr1","rts_rr2","tranclass","bl_rec","sc_hi","gcs_v_1_class","gcs_m_1_class","gcs_e_1_class","gcs_v_2_class","gcs_m_2_class","gcs_e_2_class", "spO2_1_wO2","spO2_1_woO2","spO2_2_wO2","spO2_2_woO2", "niss", "age", "sex", "age", "ot_1", "moi", "tran", "died","spO2_1_cat","spO2_2_cat","died","cat_hr1", "cat_hr2","gcs_t_1","gcs_t_2")
 
 #titta på kont värdena och bedöm
 continuous <-select_if(predictors, is.numeric)
@@ -304,12 +304,16 @@ predictors$ot_1 <- as.factor(predictors$ot_1)
 predictors$moi <- as.factor(predictors$moi)
 predictors$tran <- as.factor(predictors$tran)
 predictors$died <- as.factor(predictors$died)
+predictors$gcs_t_1 <- as.factor(predictors$gcs_t_1)
+predictors$gcs_t_2 <- as.factor(predictors$gcs_t_2)
 
 #make integer
 predictors$rts_sbp1 <- as.integer(predictors$rts_sbp1)
 predictors$rts_sbp2 <- as.integer(predictors$rts_sbp2)
 predictors$rts_rr1 <- as.integer(predictors$rts_rr1)
 predictors$rts_rr2 <- as.integer(predictors$rts_rr2)
+predictors$cat_hr2 <- as.integer(predictors$cat_hr2)
+predictors$cat_hr1 <- as.integer(predictors$cat_hr1)
 predictors$gcs_v_1_class <- as.integer(predictors$gcs_v_1_class)
 predictors$gcs_m_1_class <- as.integer(predictors$gcs_m_1_class)
 predictors$gcs_e_1_class <- as.integer(predictors$gcs_e_1_class)
@@ -318,14 +322,8 @@ predictors$gcs_m_2_class <- as.integer(predictors$gcs_m_2_class)
 predictors$gcs_e_2_class <- as.integer(predictors$gcs_e_2_class)
 
 
-#funkar inte
-#model=glm2(treated_icu~rts_sbp1+rts_sbp2+rts_rr1+rts_rr2+tranclass+bl_rec+sc_hi+gcs_v_1_class+gcs_m_1_class+gcs_e_1_class+gcs_v_2_class+gcs_m_2_class+gcs_e_2_class+spO2_1_wO2+spO2_1_woO2+spO2_2_wO2+spO2_2_woO2+ niss+ age+ sex+ ot_1+ moi+ tran+ died,data=predictors, family=binomial)
-
 #funkar
-#model=glm2(treated_icu~rts_sbp1+rts_sbp2+rts_rr1+rts_rr2+tranclass+bl_rec+sc_hi+gcs_v_1_class+gcs_e_1_class+gcs_v_2_class+gcs_m_2_class+gcs_e_2_class+niss+age+sex+died+ot_1+spO2_1_cat,data=predictors, family=binomial)
-
-#funkar
-glm.fit=glm2(treated_icu~rts_sbp1+rts_sbp2+rts_rr1+rts_rr2+tranclass+bl_rec+sc_hi+gcs_v_1_class+gcs_m_1_class+gcs_e_1_class+gcs_v_2_class+gcs_m_2_class+gcs_e_2_class+ niss+ age+ sex+ ot_1+ moi+ tran+ died+spO2_1_cat+spO2_2_cat,data=predictors, family=binomial)
+glm.fit=glm2(treated_icu~rts_sbp1+rts_sbp2+rts_rr1+rts_rr2+tranclass+bl_rec+sc_hi+gcs_v_1_class+gcs_m_1_class+gcs_e_1_class+gcs_v_2_class+gcs_m_2_class+gcs_e_2_class+ niss+ age+ sex+ ot_1+ moi+ tran+ died+spO2_1_cat+spO2_2_cat+cat_hr1+cat_hr2,data=predictors, family=binomial)
 
 #spO2_1_woO2+spO2_2_wO2+spO2_2_woO2 funkar inte, eftersom de har så många NA
 
@@ -333,33 +331,6 @@ map(predictors, ~sum(is.na(.)))
 summary(predictors)
 sapply(predictors, table)
 
-#okej, nu ska jag bedöma hur bra det blev. Steg 1 verkar vara att återskapa prediktor-dataframen så som den var innan jag la till beroende variabeln
-#predictors <- predictors %>% pull(treted_icu)
-
-# predictors = data  %>% select("rts_sbp1","rts_sbp2","rts_rr1","rts_rr2","tranclass","bl_rec","sc_hi","gcs_v_1_class","gcs_m_1_class","gcs_e_1_class","gcs_v_2_class","gcs_m_2_class","gcs_e_2_class", "spO2_1_wO2","spO2_1_woO2","spO2_2_wO2","spO2_2_woO2", "niss", "age", "sex", "age", "ot_1", "moi", "tran", "died","spO2_1_cat","spO2_2_cat" )
-#
-# #make 2 factor
-# predictors$bl_rec <- as.factor(predictors$bl_rec)
-# predictors$sc_hi <- as.factor(predictors$sc_hi)
-# predictors$sex <- as.factor(predictors$sex)
-# predictors$tran <- as.factor(predictors$tran)
-# predictors$tranclass <- as.factor(predictors$tranclass)
-# predictors$ot_1 <- as.factor(predictors$ot_1)
-# predictors$moi <- as.factor(predictors$moi)
-# predictors$tran <- as.factor(predictors$tran)
-# predictors$died <- as.factor(predictors$died)
-#
-# #make integer
-# predictors$rts_sbp1 <- as.integer(predictors$rts_sbp1)
-# predictors$rts_sbp2 <- as.integer(predictors$rts_sbp2)
-# predictors$rts_rr1 <- as.integer(predictors$rts_rr1)
-# predictors$rts_rr2 <- as.integer(predictors$rts_rr2)
-# predictors$gcs_v_1_class <- as.integer(predictors$gcs_v_1_class)
-# predictors$gcs_m_1_class <- as.integer(predictors$gcs_m_1_class)
-# predictors$gcs_e_1_class <- as.integer(predictors$gcs_e_1_class)
-# predictors$gcs_v_2_class <- as.integer(predictors$gcs_v_2_class)
-# predictors$gcs_m_2_class <- as.integer(predictors$gcs_m_2_class)
-# predictors$gcs_e_2_class <- as.integer(predictors$gcs_e_2_class)
 
 treated_icu=data.frame(treated_icu)
 
@@ -382,7 +353,7 @@ summary(glm.fit)
 # We can't use any observations that has NA in the outcome we predict to, we delete these.
 train_data <- train_data %>% filter(!is.na(treated_icu))
 # Select the predictors and outcome
-model_data <- train_data %>% select("treated_icu", "rts_sbp1","rts_sbp2","rts_rr1","rts_rr2","tranclass","bl_rec","sc_hi","gcs_v_1_class","gcs_m_1_class","gcs_e_1_class","gcs_v_2_class","gcs_m_2_class","gcs_e_2_class", "spO2_1_wO2","spO2_1_woO2","spO2_2_wO2","spO2_2_woO2", "niss", "age", "sex", "age", "ot_1", "moi", "tran", "died","spO2_1_cat","spO2_2_cat" )
+model_data <- train_data %>% select("treated_icu", "rts_sbp1","rts_sbp2","rts_rr1","rts_rr2","tranclass","bl_rec","sc_hi","gcs_v_1_class","gcs_m_1_class","gcs_e_1_class","gcs_v_2_class","gcs_m_2_class","gcs_e_2_class", "spO2_1_wO2","spO2_1_woO2","spO2_2_wO2","spO2_2_woO2", "niss", "age", "sex", "age", "ot_1", "moi", "tran", "died","spO2_1_cat","spO2_2_cat","cat_hr1", "cat_hr2" )
 # Analyse missing
 library(naniar)
 # Visulise number of missing for each variable
@@ -394,7 +365,7 @@ model_data <- model_data %>% filter(!is.na(niss), !is.na(age))
 model_data <- model_data %>% replace(is.na(.), "Missing")
 
 # Handle the test data in the same way as the training data
-test_data <- test_data %>% select("treated_icu", "rts_sbp1","rts_sbp2","rts_rr1","rts_rr2","tranclass","bl_rec","sc_hi","gcs_v_1_class","gcs_m_1_class","gcs_e_1_class","gcs_v_2_class","gcs_m_2_class","gcs_e_2_class", "spO2_1_wO2","spO2_1_woO2","spO2_2_wO2","spO2_2_woO2", "niss", "age", "sex", "age", "ot_1", "moi", "tran", "died","spO2_1_cat","spO2_2_cat" )
+test_data <- test_data %>% select("treated_icu", "rts_sbp1","rts_sbp2","rts_rr1","rts_rr2","tranclass","bl_rec","sc_hi","gcs_v_1_class","gcs_m_1_class","gcs_e_1_class","gcs_v_2_class","gcs_m_2_class","gcs_e_2_class", "spO2_1_wO2","spO2_1_woO2","spO2_2_wO2","spO2_2_woO2", "niss", "age", "sex", "age", "ot_1", "moi", "tran", "died","spO2_1_cat","spO2_2_cat","cat_hr1", "cat_hr2" )
 test_data <- test_data %>% filter(!is.na(treated_icu))
 test_data <- test_data %>% filter(!is.na(niss), !is.na(age))
 test_data <- test_data %>% replace(is.na(.), "Missing")
@@ -402,7 +373,7 @@ test_data <- test_data %>% replace(is.na(.), "Missing")
 #d <- model_data[indices,] #allows boot to select sample
 
 # Fot the model using the training data
-glm_model <- glm(treated_icu ~ rts_sbp1+rts_sbp2+rts_rr1+rts_rr2+tranclass+bl_rec+sc_hi+gcs_v_1_class+gcs_m_1_class+gcs_e_1_class+gcs_v_2_class+gcs_m_2_class+gcs_e_2_class+niss+age+sex+ot_1+moi+tran+died+spO2_1_cat+spO2_2_cat,family=binomial, data = model_data)
+glm_model <- glm(treated_icu ~ rts_sbp1+rts_sbp2+rts_rr1+rts_rr2+tranclass+bl_rec+sc_hi+gcs_v_1_class+gcs_m_1_class+gcs_e_1_class+gcs_v_2_class+gcs_m_2_class+gcs_e_2_class+niss+age+sex+ot_1+moi+tran+died+spO2_1_cat+spO2_2_cat+cat_hr1+cat_hr2,family=binomial, data = model_data)
 summary(glm_model)
 
 # Use the model to create ROC curve and calculate AUC on the training data
@@ -435,12 +406,22 @@ unmetprop_train=unmet_train/ICUtrain
 unmet_test=overcutoff_test-ICUtest
 unmetprop_test=unmet_test/ICUtest
 
+#pga nyfiken, hur många vårdades på ICU trots att de hade för låga propensity scores för att "platsa"
+df_prob=data.frame(test_prob)
+df_question=data.frame(test_data,df_prob)
+question <- df_question %>%
+  
+  mutate(unneccesary = case_when(df_prob <cutoff_test & treated_icu >0.5  ~ 1))
 
-return(unmetprop_test) #return unmet 
+unneccesary_ICU=sum(question$unneccesary,na.rm=t)
+unnecessary_prop=unneccesary_ICU/ICUtest
+
+
+return(unmetprop_test) #return unmet
 }
 
 #bootstrapping
 
-reps <- boot(data=data, statistic=unmet_function, R=1000, formula=mpg~disp)
+reps <- boot(data=data, statistic=unmet_function, R=5, formula=mpg~disp)
 
 reps
