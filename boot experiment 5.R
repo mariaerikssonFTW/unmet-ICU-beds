@@ -184,7 +184,7 @@ data <- data %>%
   
   
   mutate(gcs_v_1_class= case_when(str_detect(gcs_v_1, "1") &weird_gcs_1==0   ~ 1,
-                                  str_detect(gcs_v_1, "1v")   ~ 2,
+                                  str_detect(gcs_v_1, "1v")   ~ 1, #vill ha egen kategori 2
                                   str_detect(gcs_v_1, "2")  &weird_gcs_1==0  ~ 3,
                                   str_detect(gcs_v_1, "3" ) &weird_gcs_1==0  ~ 4,
                                   str_detect(gcs_v_1, "4")  &weird_gcs_1==0  ~ 4,
@@ -199,7 +199,7 @@ data <- data %>%
                                   str_detect(gcs_m_1, "6" ) &weird_gcs_1==0   ~ 3)) %>%
   
   mutate(gcs_e_1_class= case_when(str_detect(gcs_e_1, "1")  &weird_gcs_1==0   ~ 1,
-                                  str_detect(gcs_e_1, "1c")   ~ 2,
+                                  str_detect(gcs_e_1, "1c")   ~ 1, #vill ha egen kategori 2
                                   str_detect(gcs_e_1, "2")  &weird_gcs_1==0   ~ 3,
                                   str_detect(gcs_e_1, "3" ) &weird_gcs_1==0  ~ 4,
                                   str_detect(gcs_e_1, "4") &weird_gcs_1==0    ~ 4,
@@ -207,7 +207,7 @@ data <- data %>%
                                   str_detect(gcs_e_1, "6" ) &weird_gcs_1==0   ~ 4)) %>%
   
   mutate(gcs_v_2_class= case_when(str_detect(gcs_v_2, "1")  &weird_gcs_2==0  ~ 1,
-                                  str_detect(gcs_v_2, "1v")  ~ 2,
+                                  str_detect(gcs_v_2, "1v")  ~ 1, #vill ha egen kategori 2
                                   str_detect(gcs_v_2, "2") &weird_gcs_2==0   ~ 3,
                                   str_detect(gcs_v_2, "3" )  &weird_gcs_2==0 ~ 4,
                                   str_detect(gcs_v_2, "4")  &weird_gcs_2==0  ~ 4,
@@ -222,7 +222,7 @@ data <- data %>%
                                   str_detect(gcs_m_2, "6" )  &weird_gcs_2==0 ~ 3)) %>%
   
   mutate(gcs_e_2_class= case_when(str_detect(gcs_e_2, "1") &weird_gcs_2==0   ~ 1,
-                                  str_detect(gcs_e_2, "1c")  ~ 2,
+                                  str_detect(gcs_e_2, "1c")  ~ 1, #vill ha egen kategori 2
                                   str_detect(gcs_e_2, "2")  &weird_gcs_2==0  ~ 3,
                                   str_detect(gcs_e_2, "3" )  &weird_gcs_2==0 ~ 4,
                                   str_detect(gcs_e_2, "4")  &weird_gcs_2==0  ~ 4,
