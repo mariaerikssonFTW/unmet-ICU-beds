@@ -62,14 +62,14 @@ data=data.frame( data, outcome)
 data <- data %>%
   
   mutate(gcs_e_1int = case_when(str_detect(gcs_e_1, "1c")   ~ 1,
-                                str_detect(gcs_e_1, "1")  ~ 1,
+                                str_detect(gcs_e_1, "1\\b")  ~ 1,
                                 str_detect(gcs_e_1, "2")   ~ 2,
                                 str_detect(gcs_e_1, "3")   ~ 3,
                                 str_detect(gcs_e_1, "4")   ~ 4,
                                 str_detect(gcs_e_1, "5")   ~ 5,
                                 str_detect(gcs_e_1, "6")   ~ 6)) %>%
   
-  mutate(gcs_v_1int = case_when(str_detect(gcs_v_1, "1")  ~ 1,
+  mutate(gcs_v_1int = case_when(str_detect(gcs_v_1, "1\\b")  ~ 1,
                                 str_detect(gcs_v_1, "1v")  ~ 1,
                                 str_detect(gcs_v_1, "2")   ~ 2,
                                 str_detect(gcs_v_1, "3")   ~ 3,
@@ -78,14 +78,14 @@ data <- data %>%
                                 str_detect(gcs_v_1, "6")   ~ 6))%>%
   
   mutate(gcs_e_2int = case_when(str_detect(gcs_e_2, "1c")   ~ 1,
-                                str_detect(gcs_e_2, "1")  ~ 1,
+                                str_detect(gcs_e_2, "1\\b")  ~ 1,
                                 str_detect(gcs_e_2, "2")   ~ 2,
                                 str_detect(gcs_e_2, "3")   ~ 3,
                                 str_detect(gcs_e_2, "4")   ~ 4,
                                 str_detect(gcs_e_2, "5")   ~ 5,
                                 str_detect(gcs_e_2, "6")   ~ 6)) %>%
   
-  mutate(gcs_v_2int = case_when(str_detect(gcs_v_2, "1")  ~ 1,
+  mutate(gcs_v_2int = case_when(str_detect(gcs_v_2, "1\\b")  ~ 1,
                                 str_detect(gcs_v_2, "1v")  ~ 1,
                                 str_detect(gcs_v_2, "2")   ~ 2,
                                 str_detect(gcs_v_2, "3")   ~ 3,
@@ -95,14 +95,14 @@ data <- data %>%
 
 data$gcs_e_1int <- as.integer(data$gcs_e_1int)
 data$gcs_v_1int <- as.integer(data$gcs_v_1int)
-data$gcs_m_1 <- as.integer(data$gcs_m_1)
-sum_individual_1=data$gcs_e_1int +data$gcs_v_1int+data$gcs_m_1
+data$gcs_m_1int <- as.integer(data$gcs_m_1)
+sum_individual_1=data$gcs_e_1int +data$gcs_v_1int+data$gcs_m_1int
 diff_1=sum_individual_1-data$gcs_t_1
 
 data$gcs_e_2int <- as.integer(data$gcs_e_2int)
 data$gcs_v_2int <- as.integer(data$gcs_v_2int)
-data$gcs_m_2 <- as.integer(data$gcs_m_2)
-sum_individual_2=data$gcs_e_2int +data$gcs_v_2int+data$gcs_m_2
+data$gcs_m_2int <- as.integer(data$gcs_m_2)
+sum_individual_2=data$gcs_e_2int +data$gcs_v_2int+data$gcs_m_2int
 diff_2=sum_individual_2-data$gcs_t_2
 
 
@@ -160,7 +160,7 @@ data <- data %>%
   
   mutate(rts_rr2 = case_when(rr_2 ==0   ~ 0,
                              rr_2 < 5   ~ 0, # 1, måste klumpas ihop för att inte bli för få i en kategori
-                             rr_2 < 9   ~0 , # 2, kan klumpas ihop för att inte bli för få i en kategori
+                             rr_2 < 9   ~0 , # 2, måste klumpas ihop för att inte bli för få i en kategori
                              rr_2 > 29   ~ 3,
                              rr_2 > 9 & rr_2 < 29 ~ 4)) %>%
   
@@ -183,8 +183,8 @@ data <- data %>%
                           sc<3.000001  ~ "No")) %>% 
   
   
-  mutate(gcs_v_1_class= case_when(str_detect(gcs_v_1, "1") &weird_gcs_1==0   ~ 1,
-                                  str_detect(gcs_v_1, "1v")   ~ 1, #vill ha egen kategori 2
+  mutate(gcs_v_1_class= case_when(str_detect(gcs_v_1, "1\\b") &weird_gcs_1==0   ~ 1,
+                                  str_detect(gcs_v_1, "1v")  &weird_gcs_1==0  ~ 7, #vill ha egen kategori 2
                                   str_detect(gcs_v_1, "2")  &weird_gcs_1==0  ~ 3,
                                   str_detect(gcs_v_1, "3" ) &weird_gcs_1==0  ~ 4,
                                   str_detect(gcs_v_1, "4")  &weird_gcs_1==0  ~ 4,
@@ -198,16 +198,16 @@ data <- data %>%
                                   str_detect(gcs_m_1, "5" ) &weird_gcs_1==0   ~ 3,
                                   str_detect(gcs_m_1, "6" ) &weird_gcs_1==0   ~ 3)) %>%
   
-  mutate(gcs_e_1_class= case_when(str_detect(gcs_e_1, "1")  &weird_gcs_1==0   ~ 1,
-                                  str_detect(gcs_e_1, "1c")   ~ 1, #vill ha egen kategori 2
+  mutate(gcs_e_1_class= case_when(str_detect(gcs_e_1, "1\\b")  &weird_gcs_1==0   ~ 1,
+                                  str_detect(gcs_e_1, "1c")  &weird_gcs_1==0 ~ 7, #vill ha egen kategori 2
                                   str_detect(gcs_e_1, "2")  &weird_gcs_1==0   ~ 3,
                                   str_detect(gcs_e_1, "3" ) &weird_gcs_1==0  ~ 4,
                                   str_detect(gcs_e_1, "4") &weird_gcs_1==0    ~ 4,
                                   str_detect(gcs_e_1, "5" ) &weird_gcs_1==0   ~ 4,
                                   str_detect(gcs_e_1, "6" ) &weird_gcs_1==0   ~ 4)) %>%
   
-  mutate(gcs_v_2_class= case_when(str_detect(gcs_v_2, "1")  &weird_gcs_2==0  ~ 1,
-                                  str_detect(gcs_v_2, "1v")  ~ 1, #vill ha egen kategori 2
+  mutate(gcs_v_2_class= case_when(str_detect(gcs_v_2, "1\\b")  &weird_gcs_2==0  ~ 1,
+                                  str_detect(gcs_v_2, "1v") &weird_gcs_1==0 ~ 7, #vill ha egen kategori 2
                                   str_detect(gcs_v_2, "2") &weird_gcs_2==0   ~ 3,
                                   str_detect(gcs_v_2, "3" )  &weird_gcs_2==0 ~ 4,
                                   str_detect(gcs_v_2, "4")  &weird_gcs_2==0  ~ 4,
@@ -221,8 +221,8 @@ data <- data %>%
                                   str_detect(gcs_m_2, "5" ) &weird_gcs_2==0  ~ 3,
                                   str_detect(gcs_m_2, "6" )  &weird_gcs_2==0 ~ 3)) %>%
   
-  mutate(gcs_e_2_class= case_when(str_detect(gcs_e_2, "1") &weird_gcs_2==0   ~ 1,
-                                  str_detect(gcs_e_2, "1c")  ~ 1, #vill ha egen kategori 2
+  mutate(gcs_e_2_class= case_when(str_detect(gcs_e_2, "1\\b") &weird_gcs_2==0   ~ 1,
+                                  str_detect(gcs_e_2, "1c") &weird_gcs_1==0 ~ 7, #vill ha egen kategori 2
                                   str_detect(gcs_e_2, "2")  &weird_gcs_2==0  ~ 3,
                                   str_detect(gcs_e_2, "3" )  &weird_gcs_2==0 ~ 4,
                                   str_detect(gcs_e_2, "4")  &weird_gcs_2==0  ~ 4,
@@ -451,20 +451,20 @@ return(unmetprop_test) #return unmet
 }
 
 # #bootstrapping
-# 
-reps <- boot(data=data, statistic=unmet_function, R=4, formula=mpg~disp)
+#
+reps <- boot(data=data, statistic=unmet_function, R=15, formula=mpg~disp)
 
 reps
 
 #frågor:
-#vad göra med serumkreatinin hi/lo? 12000 pat har data, 3000 är 0 (strikt taget orimligt lågt är det att tolka som "low" eller "odokuenterat"=NA?). det känns lite onödigt att kategoriserade dessa 3000 som missing. också är sc både hög och låg statistiskt signifikanta  í modellen
+#vad göra med serumkreatinin hi/lo? 12000 pat har data, 3000 är 0 (strikt taget orimligt lågt är det att tolka som "low" eller "odokuenterat"=NA?). det känns lite onödigt att kategoriserade dessa 3000 som missing. också är sc både hög och låg statistiskt signifikanta  í modellen hur ska man tolka det när serumkreatinin är taget på de flesta (alltås inte tagits på indikation mkt skadad)
 #icd_1 har 3 NA och när man höjer R i reps slumpar den till slut så att den får en i test men ingen i train eller vice versa (och error) . finns nån lösning på det?
+
 #i summary(glm_model)
 #incl = 2 alltså dött mellan arrival och admission. av incl har jag gjort en kategorisk variabel doctor_assess med kategorierna "3", "1 eller 0" och "2"=>NA=>missing. kategori 2 har dött mellan arrival och  admission och bör exkluderas. av dessa 120 pat har ändå 4 legat på ICU hur ska det tolkas? och hanteras? för de har jag gjort till missing och missing är en signifikant kategori 
-#icd_1 har kategorierna "before arrival" "yes" och "no" varför finns bara "yes" och "no" i  summary(glm_model)
+#icd_1 har kategorierna "before arrival" "yes" och "no". men varför finns bara "yes" och "no" i  summary(glm_model)? de har tillräckligt många i varje kategori för att det ska vara besynnerligt enl. titt på tableone, där kan man förstå att "before arrival" och "yes" äver overrepresenterade i ICU. 
 #intub_1 samma fråga som ovan och: i summary(glm_model) får man intub_1 = No som signifikant men det verkar orimligt och får inte stöd i tableone analysen
 #look_cat1=tableone::CreateCatTable(data = test_data, vars = cat_variables, strata = "treated_icu")
 #samma sak för gcs de låga GCS kategorierna motsvarande 1, 1v eller 1c och 2 är inte med i summary(glm_model) och det är höga gcs som är associerade med ICU? tableone enligt förväntan.
 #för syst blodtryck och rr har höga RTS scores varit associerade med ICU enl summary(glm_model) det känns underligt men även tableone underlig. kod fel, förväntning fel, eller båda?
-#även utan villkoret att gcs ska addera ihop rätt har jag enligt sapply(predictors, table) mycket få GCS_v_1_class och GCS_e_1_class (och _2) kategori 2 alltså 1v och 1c och det stämmer inte överens med sapply på data.frame(data$gcs_e_1, data$gcs_v_1,data$gcs_e_2, data$gcs_v_2). varför blir det så? jag är inte girig ffa jag vill ha 1v och 1c som egna kategorier men det förstör mina boots när de är så få på samma sätt som missing på icd_1 beskrivet ovan, därför är 1v och 1c ihopklumpade nu
 #du ser jag räknat ut andel pat som varit på ICU utan att "platsa", för jämförelse mot unmet need. Johanna säger det är väntat såklart och inte finns standard för vad som är ok. finns det någon anständighetsgräns på denna proportion eller är det beyond the scope?
