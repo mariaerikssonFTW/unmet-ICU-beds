@@ -54,6 +54,60 @@ outcome=data %>%
 #addera kolumnerna
 data=data.frame( data, outcome)
 
+#filter for GCS that don't quite add up
+data <- data %>%
+  
+  mutate(gcs_e_1int = case_when(str_detect(gcs_e_1, "1c")   ~ 1,
+                                str_detect(gcs_e_1, "1")  ~ 1,
+                                str_detect(gcs_e_1, "2")   ~ 2,
+                                str_detect(gcs_e_1, "3")   ~ 3,
+                                str_detect(gcs_e_1, "4")   ~ 4,
+                                str_detect(gcs_e_1, "5")   ~ 5,
+                                str_detect(gcs_e_1, "6")   ~ 6)) %>%
+  
+  mutate(gcs_v_1int = case_when(str_detect(gcs_v_1, "1")  ~ 1,
+                                str_detect(gcs_v_1, "1v")  ~ 1,
+                                str_detect(gcs_v_1, "2")   ~ 2,
+                                str_detect(gcs_v_1, "3")   ~ 3,
+                                str_detect(gcs_v_1, "4")   ~ 4,
+                                str_detect(gcs_v_1, "5")   ~ 5,
+                                str_detect(gcs_v_1, "6")   ~ 6))%>%
+  
+  mutate(gcs_e_2int = case_when(str_detect(gcs_e_2, "1c")   ~ 1,
+                                str_detect(gcs_e_2, "1")  ~ 1,
+                                str_detect(gcs_e_2, "2")   ~ 2,
+                                str_detect(gcs_e_2, "3")   ~ 3,
+                                str_detect(gcs_e_2, "4")   ~ 4,
+                                str_detect(gcs_e_2, "5")   ~ 5,
+                                str_detect(gcs_e_2, "6")   ~ 6)) %>%
+  
+  mutate(gcs_v_2int = case_when(str_detect(gcs_v_2, "1")  ~ 1,
+                                str_detect(gcs_v_2, "1v")  ~ 1,
+                                str_detect(gcs_v_2, "2")   ~ 2,
+                                str_detect(gcs_v_2, "3")   ~ 3,
+                                str_detect(gcs_v_2, "4")   ~ 4,
+                                str_detect(gcs_v_2, "5")   ~ 5,
+                                str_detect(gcs_v_2, "6")   ~ 6))
+
+data$gcs_e_1int <- as.integer(data$gcs_e_1int)
+data$gcs_v_1int <- as.integer(data$gcs_v_1int)
+data$gcs_m_1 <- as.integer(data$gcs_m_1)
+sum_individual_1=data$gcs_e_1int +data$gcs_v_1int+data$gcs_m_1
+diff_1=sum_individual_1-data$gcs_t_1
+
+data$gcs_e_2int <- as.integer(data$gcs_e_2int)
+data$gcs_v_2int <- as.integer(data$gcs_v_2int)
+data$gcs_m_2 <- as.integer(data$gcs_m_2)
+sum_individual_2=data$gcs_e_2int +data$gcs_v_2int+data$gcs_m_2
+diff_2=sum_individual_2-data$gcs_t_2
+
+
+data=data.frame( data, diff_1,diff_2)  
+
+data <- data %>% 
+  mutate(weird_gcs_1=case_when(diff_1 ==0  ~ 0))%>%
+  mutate(weird_gcs_2=case_when(diff_2 ==0  ~ 0))
+
 #lite rensning
 # Updates to the dataset
 data <- data %>%
@@ -118,56 +172,56 @@ data <- data %>%
                            ubr_1<1.5   ~ "No")) %>%
   
   mutate(sc_hi= case_when(sc>3   ~ "Yes",
-                          sc<3.000001   ~ "No")) %>%
+                          sc<3.000001  ~ "No")) %>% 
   
   # logical or för paste ||
   
-  mutate(gcs_v_1_class= case_when(str_detect(gcs_v_1, "1")    ~ 1,
-                                  str_detect(gcs_v_1, "1v")   ~ 2,
-                                  str_detect(gcs_v_1, "2")    ~ 3,
-                                  str_detect(gcs_v_1, "3" )   ~ 4,
-                                  str_detect(gcs_v_1, "4")    ~ 4,
-                                  str_detect(gcs_v_1, "5" )   ~ 4,
-                                  str_detect(gcs_v_1, "6" )   ~ 4)) %>%
+  mutate(gcs_v_1_class= case_when(str_detect(gcs_v_1, "1") &weird_gcs_1==0   ~ 1,
+                                  str_detect(gcs_v_1, "1v")&weird_gcs_1==0  ~ 2,
+                                  str_detect(gcs_v_1, "2")  &weird_gcs_1==0  ~ 3,
+                                  str_detect(gcs_v_1, "3" ) &weird_gcs_1==0  ~ 4,
+                                  str_detect(gcs_v_1, "4")  &weird_gcs_1==0  ~ 4,
+                                  str_detect(gcs_v_1, "5" ) &weird_gcs_1==0  ~ 4,
+                                  str_detect(gcs_v_1, "6" ) &weird_gcs_1==0  ~ 4)) %>%
   
-  mutate(gcs_m_1_class= case_when(str_detect(gcs_m_1, "1")    ~ 1,
-                                  str_detect(gcs_m_1, "2")    ~ 3,
-                                  str_detect(gcs_m_1, "3" )   ~ 4,
-                                  str_detect(gcs_m_1, "4")    ~ 4,
-                                  str_detect(gcs_m_1, "5" )   ~ 4,
-                                  str_detect(gcs_m_1, "6" )   ~ 4)) %>%
+  mutate(gcs_m_1_class= case_when(str_detect(gcs_m_1, "1") &weird_gcs_1==0    ~ 1,
+                                  str_detect(gcs_m_1, "2")  &weird_gcs_1==0   ~ 2,
+                                  str_detect(gcs_m_1, "3" )  &weird_gcs_1==0  ~ 3,
+                                  str_detect(gcs_m_1, "4")  &weird_gcs_1==0   ~ 3,
+                                  str_detect(gcs_m_1, "5" ) &weird_gcs_1==0   ~ 3,
+                                  str_detect(gcs_m_1, "6" ) &weird_gcs_1==0   ~ 3)) %>%
   
-  mutate(gcs_e_1_class= case_when(str_detect(gcs_e_1, "1")    ~ 1,
-                                  str_detect(gcs_e_1, "1v")   ~ 2,
-                                  str_detect(gcs_e_1, "2")    ~ 3,
-                                  str_detect(gcs_e_1, "3" )   ~ 4,
-                                  str_detect(gcs_e_1, "4")    ~ 4,
-                                  str_detect(gcs_e_1, "5" )   ~ 4,
-                                  str_detect(gcs_e_1, "6" )   ~ 4)) %>%
+  mutate(gcs_e_1_class= case_when(str_detect(gcs_e_1, "1")  &weird_gcs_1==0   ~ 1,
+                                  str_detect(gcs_e_1, "1v") &weird_gcs_1==0   ~ 2,
+                                  str_detect(gcs_e_1, "2")  &weird_gcs_1==0   ~ 3,
+                                  str_detect(gcs_e_1, "3" ) &weird_gcs_1==0  ~ 4,
+                                  str_detect(gcs_e_1, "4") &weird_gcs_1==0    ~ 4,
+                                  str_detect(gcs_e_1, "5" ) &weird_gcs_1==0   ~ 4,
+                                  str_detect(gcs_e_1, "6" ) &weird_gcs_1==0   ~ 4)) %>%
   
   #second survey. du ,åste pricka allt så du kan få NA
-  mutate(gcs_v_2_class= case_when(str_detect(gcs_v_2, "1")    ~ 1,
-                                  str_detect(gcs_v_2, "1v")   ~ 2,
-                                  str_detect(gcs_v_2, "2")    ~ 3,
-                                  str_detect(gcs_v_2, "3" )   ~ 4,
-                                  str_detect(gcs_v_2, "4")    ~ 4,
-                                  str_detect(gcs_v_2, "5" )   ~ 4,
-                                  str_detect(gcs_v_2, "6" )   ~ 4)) %>%
+  mutate(gcs_v_2_class= case_when(str_detect(gcs_v_2, "1")  &weird_gcs_2==0  ~ 1,
+                                  str_detect(gcs_v_2, "1v") &weird_gcs_2==0  ~ 2,
+                                  str_detect(gcs_v_2, "2") &weird_gcs_2==0   ~ 3,
+                                  str_detect(gcs_v_2, "3" )  &weird_gcs_2==0 ~ 4,
+                                  str_detect(gcs_v_2, "4")  &weird_gcs_2==0  ~ 4,
+                                  str_detect(gcs_v_2, "5" )  &weird_gcs_2==0 ~ 4,
+                                  str_detect(gcs_v_2, "6" ) &weird_gcs_2==0 ~ 4)) %>%
   
-  mutate(gcs_m_2_class= case_when(str_detect(gcs_m_2, "1")    ~ 1,
-                                  str_detect(gcs_m_2, "2")    ~ 3,
-                                  str_detect(gcs_m_2, "3" )   ~ 4,
-                                  str_detect(gcs_m_2, "4")    ~ 4,
-                                  str_detect(gcs_m_2, "5" )   ~ 4,
-                                  str_detect(gcs_m_2, "6" )   ~ 4)) %>%
+  mutate(gcs_m_2_class= case_when(str_detect(gcs_m_2, "1")  &weird_gcs_2==0  ~ 1,
+                                  str_detect(gcs_m_2, "2")  &weird_gcs_2==0  ~ 2,
+                                  str_detect(gcs_m_2, "3" ) &weird_gcs_2==0  ~ 3,
+                                  str_detect(gcs_m_2, "4")  &weird_gcs_2==0  ~ 3,
+                                  str_detect(gcs_m_2, "5" ) &weird_gcs_2==0  ~ 3,
+                                  str_detect(gcs_m_2, "6" )  &weird_gcs_2==0 ~ 3)) %>%
   
-  mutate(gcs_e_2_class= case_when(str_detect(gcs_e_2, "1")    ~ 1,
-                                  str_detect(gcs_e_2, "1v")   ~ 2,
-                                  str_detect(gcs_e_2, "2")    ~ 3,
-                                  str_detect(gcs_e_2, "3" )   ~ 4,
-                                  str_detect(gcs_e_2, "4")    ~ 4,
-                                  str_detect(gcs_e_2, "5" )   ~ 4,
-                                  str_detect(gcs_e_2, "6" )   ~ 4)) %>%
+  mutate(gcs_e_2_class= case_when(str_detect(gcs_e_2, "1") &weird_gcs_2==0   ~ 1,
+                                  str_detect(gcs_e_2, "1v") &weird_gcs_2==0  ~ 2,
+                                  str_detect(gcs_e_2, "2")  &weird_gcs_2==0  ~ 3,
+                                  str_detect(gcs_e_2, "3" )  &weird_gcs_2==0 ~ 4,
+                                  str_detect(gcs_e_2, "4")  &weird_gcs_2==0  ~ 4,
+                                  str_detect(gcs_e_2, "5" ) &weird_gcs_2==0  ~ 4,
+                                  str_detect(gcs_e_2, "6" ) &weird_gcs_2==0  ~ 4)) %>%
   
   # Add id column to the dataset
   #  mutate(id = row_number()) %>% #jag byter ut, finns seqn redan
@@ -392,7 +446,7 @@ youdens_test=coords(test_roc, x="best", input="threshold", best.method="youden")
 
 #cutoff
 cutoff_train=youdens_train$threshold
-cutoff_test=youdens_train$threshold
+cutoff_test=youdens_test$threshold
 
 #unmet
 #sen räknar vi hur många pat fått högre propensity scores av modellen än den cutoffen . det är så många som har tillräckligt höga propensity scores att de rimligen borde ha ICU-vårdats.
@@ -417,7 +471,7 @@ unneccesary_ICU=sum(question$unneccesary,na.rm=t)
 unnecessary_prop=unneccesary_ICU/ICUtest
 
 
-return(unmetprop_test) #return unmet
+return(unnecessary_prop) #return unmet
 }
 
 #bootstrapping
