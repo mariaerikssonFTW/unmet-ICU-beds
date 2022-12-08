@@ -51,6 +51,7 @@ outcome=data %>%
                                    time_to_death < 6 ~ 0)) %>%
   #återkom fatta hur du filtrerar på detta
   mutate(delay2 = round(as.numeric(arrival_time-injury_time , units = "hours"),0))%>%
+  mutate(delay3 = round(as.numeric(firstsurvey_time-arrival_time , units = "hours"),0))%>%
   mutate(delay23 = round(as.numeric(firstsurvey_time-injury_time , units = "hours"),0))%>%
   mutate(delay2ifdirect = case_when(str_detect(tran, "No") & delay2<72 ~ delay2)) # %>%
 
@@ -234,24 +235,39 @@ data <- data %>%
   mutate(spO2_2_woO2 = case_when(str_detect(spo2_o2_2, "No")  ~ spo2_2))%>%
   
   #using NEWS to make a reverse
-  mutate(spO2_1_cat = case_when(str_detect(spo2_o2_1, "Yes") & spo2_1 > 97 ~ 1,
-                                str_detect(spo2_o2_1, "Yes") & spo2_1 > 95 ~ 2,
-                                str_detect(spo2_o2_1, "Yes") & spo2_1 > 93 ~ 3,
-                                str_detect(spo2_o2_1, "Yes") & spo2_1 > 88 ~ 4,
-                                str_detect(spo2_o2_1, "No") & spo2_1 > 93 ~ 4,
-                                str_detect(spo2_o2_1, "No") & spo2_1 > 86 ~ 3,
-                                str_detect(spo2_o2_1, "No") & spo2_1 > 83 ~ 2,
-                                str_detect(spo2_o2_1, "No") & spo2_1 < 83 ~ 1))%>%
+  mutate(spO2_1_cat = case_when(str_detect(spo2_o2_1, "No") & spo2_1 > 96 ~ 0,
+                                str_detect(spo2_o2_1, "Yes") & spo2_1 > 96 ~ 2,
+                                str_detect(spo2_o2_1, "No") & spo2_1 > 94 ~ 1,
+                                str_detect(spo2_o2_1, "Yes") & spo2_1 > 94 ~ 3,
+                                str_detect(spo2_o2_1, "No") & spo2_1 > 92 ~ 2,
+                                str_detect(spo2_o2_1, "Yes") & spo2_1 > 92 ~ 4,
+                                str_detect(spo2_o2_1, "No") & spo2_1 < 92 ~ 3,
+                                str_detect(spo2_o2_1, "Yes") & spo2_1 < 92 ~ 5))%>%
+                                
+                                # str_detect(spo2_o2_1, "Yes") & spo2_1 > 93 ~ 3,
+                                # str_detect(spo2_o2_1, "Yes") & spo2_1 > 88 ~ 4,
+                                # str_detect(spo2_o2_1, "No") & spo2_1 > 93 ~ 4,
+                                # str_detect(spo2_o2_1, "No") & spo2_1 > 86 ~ 3,
+                                # str_detect(spo2_o2_1, "No") & spo2_1 > 83 ~ 2,
+                                # str_detect(spo2_o2_1, "No") & spo2_1 < 83 ~ 1))%>%
   
+  mutate(spO2_2_cat = case_when(str_detect(spo2_o2_2, "No") & spo2_2 > 96 ~ 0,
+                                str_detect(spo2_o2_2, "Yes") & spo2_2 > 96 ~ 2,
+                                str_detect(spo2_o2_2, "No") & spo2_2 > 94 ~ 1,
+                                str_detect(spo2_o2_2, "Yes") & spo2_2 > 94 ~ 3,
+                                str_detect(spo2_o2_2, "No") & spo2_2 > 92 ~ 2,
+                                str_detect(spo2_o2_2, "Yes") & spo2_2 > 92 ~ 4,
+                                str_detect(spo2_o2_2, "No") & spo2_2 < 92 ~ 3,
+                                str_detect(spo2_o2_2, "Yes") & spo2_2 < 92 ~ 5))
   
-  mutate(spO2_2_cat = case_when(str_detect(spo2_o2_2, "Yes") & spo2_2 > 97 ~ 1,
-                        str_detect(spo2_o2_2, "Yes") & spo2_2 > 95 ~ 2,
-                       str_detect(spo2_o2_2, "Yes") & spo2_2 > 93 ~ 3,
-                        str_detect(spo2_o2_2, "Yes") & spo2_2 > 88 ~ 4,
-                        str_detect(spo2_o2_2, "No") & spo2_2 > 93 ~ 4,
-                        str_detect(spo2_o2_2, "No") & spo2_2 > 86 ~ 3,
-                        str_detect(spo2_o2_2, "No") & spo2_2 > 83 ~ 2,
-                        str_detect(spo2_o2_2, "No") & spo2_2 < 83 ~ 1))
+  # mutate(spO2_2_cat = case_when(str_detect(spo2_o2_2, "Yes") & spo2_2 > 97 ~ 1,
+  #                       str_detect(spo2_o2_2, "Yes") & spo2_2 > 95 ~ 2,
+  #                      str_detect(spo2_o2_2, "Yes") & spo2_2 > 93 ~ 3,
+  #                       str_detect(spo2_o2_2, "Yes") & spo2_2 > 88 ~ 4,
+  #                       str_detect(spo2_o2_2, "No") & spo2_2 > 93 ~ 4,
+  #                       str_detect(spo2_o2_2, "No") & spo2_2 > 86 ~ 3,
+  #                       str_detect(spo2_o2_2, "No") & spo2_2 > 83 ~ 2,
+  #                       str_detect(spo2_o2_2, "No") & spo2_2 < 83 ~ 1))
 
 
 #måste nu tillfogar dessa som variabler til codebook
@@ -500,3 +516,68 @@ unnecessary_prop=unneccesary_ICU/ICUtest
 
 sum(data$weird_gcs_1,na.rm=t)
 sum(data$weird_gcs_2,na.rm=t)
+
+
+
+#cont
+continuous <-select_if(predictors, is.numeric)
+# Select categorical column
+factor <- data.frame(select_if(predictors, is.character))
+
+
+#för jämförelse räknar vi också p- och t-värdena så som vi gjorde förra gången
+#den vill inte filtrera bort ett fel i codebook så jag har gjort en rättad version (spo2_o2_1 och 2 felklassificerade som kontinuerliga variabler)
+codebook <- read.csv("codebook.csv")
+
+# 4. Compare variables between ICU and non-ICU patients
+# Define the categorical and continuous variables
+cat_variables <- codebook %>% filter(type %in% "qualitative") %>%
+  # We filter out pid, not to include that in our analysis
+  filter(name != "pid") %>% pull(name)
+cont_variables <- codebook %>% filter(type %in% "quantitative") %>%
+  # We filter out licu since this is our outcome
+  filter(!name %in% c("licu")) %>% pull(name)
+#we filter for spO2_o2_1 och spO2_o2_2 för de är felklassificerade och det klarar inte loopen -funkar ej för character
+#  filter(!name %in% c("spO2_o2_1")) %>% pull(name)%>%
+# filter(!name %in% c("spO2_o2_2")) %>% pull(name)
+  
+
+#bygg samma stratum så här istället
+licu=filter(test_data, licu >0.5)
+nolicu=filter(test_data, licu <0.5)
+
+
+#välj kvant kolumnerna (jag måste speca age som numeric igen, vet inte varför)
+quantLicu <- licu[, which((names(licu) %in% cont_variables)==TRUE)]
+#quantLicu[,1] <- as.numeric(quantLicu[,1])
+quantNolicu <- nolicu[, which((names(nolicu) %in% cont_variables)==TRUE)]
+#quantNolicu[,1] <- as.numeric(quantNolicu[,1])
+
+#gör stat analysen
+quantstatlicu=CreateTableOne(data = quantLicu,includeNA=FALSE)
+quantstatnolicu=CreateTableOne(data = quantNolicu,includeNA=FALSE)
+
+#gör t.test för alla kvant kolumner
+cont_variables_df=data.frame(cont_variables) #för nästa rad
+columncount=nrow(cont_variables_df) #hur många kolumner ska vi rulla
+pvalues<- data.frame(matrix(ncol = 1, nrow = columncount))
+tvalues<- data.frame(matrix(ncol = 1, nrow = columncount))
+for (a in 1:columncount) { 
+  c=t.test(quantLicu[,a],quantNolicu[,a],na.action=na.exclude)
+  pval=c[["p.value"]]
+  tval=c[["statistic"]][["t"]]
+  pvalues[a,1]=pval
+  tvalues[a,1]=tval
+}
+
+#så tittar vi på hur de blev ur tableone. konvertera till 
+l=look_cont1
+look_cont=print(l, showAllLevels = TRUE, formatOptions = list(big.mark = ","))
+look_cont=data.frame(look_cont)
+pval=data.frame(look_cont$p)
+pval=data.frame(look_cont$p[2:34])
+
+#och nu för jämförelsen
+otherpvalues=data.frame(cont_variables_df,pvalues,pval,tvalues )
+colnames(otherpvalues)<-data.frame("variables","p_values old way","p_values new way","t values")
+
