@@ -1,0 +1,215 @@
+,name,label,description,source,note,type,values,value_labels
+1,hos,Hospital identification number,Random number unique for each hospital,Assigned during de-identification,NA,qualitative,"""6273"" ""7215"" ""7842"" ""8264""",NA
+2,pid,Patient identification number,Random number unique for each patient,Assigned during de-identification,NA,qualitative,NA,NA
+3,do,Directly observed,Describes whether the patient was enrolled during the project officer's shift,Assigned by project officer,NA,qualitative,"""No"" ""Yes""",NA
+4,incl,Inclusion criterion used,The inclusion criterion used to enroll the patient,Assigned by project officer,NA,qualitative,"""0"" ""1"" ""2"" ""3""","""NA"" ""Admitted with history of any of the specified mechanism of injury"" ""History of any of the below specified injury mechanisms but died between arrival and admission"" ""Admitted with potentially life-threatening injury as assessed by treating physician"""
+5,age,Age in years,Patient's age rounded up to closest whole year,"Recorded by project officer from patient record, health care staff, or by asking the patient or any of his/her relatives",NA,quantitative,NA,NA
+6,sex,Sex,Patient's sex,"Recorded by project officer from patient record, health care staff, or by asking the patient or any of his/her relatives",NA,qualitative,"""Female"" ""Male""",NA
+7,tran,Transferred from other health facility,Describes whether the patient was transferred from another health facility before being admitted to the participating hospital,"Recorded by project officer from patient record, health care staff, or by asking the patient or any of his/her relatives",NA,qualitative,"""No"" ""Yes""",NA
+8,doi,Date of injury,The date when the injury occured in Y-M-D format,Recorded by project officer from patient record or by asking the patient or any of his/her relatives,NA,date,NA,NA
+9,toi,Time of injury,"The time when the injury occured in HH:MM format, rounded to closest 10 minutes",Recorded by project officer from patient record or by asking the patient or any of his/her relatives,NA,time,NA,NA
+10,doar,Date of arrival,The date when the patient arrived to participating hospital in Y-M-D format,Recorded by project officer from patient record or by asking the patient or any of his/her relatives,NA,date,NA,NA
+11,toar,Time of arrival,"The time when the patient arrived to participating hospital in HH:MM format, rounded to closest 10 minutes",Recorded by project officer from patient record or by asking the patient or any of his/her relatives,NA,time,NA,NA
+12,doa,Date of admission,The date when the patient was admitted in participating hospital in Y-M-D format,Recorded by project officer from patient record,"This is an administrative timing, i.e. the date is the date printed on the patient record. The patient may however have been admitted before this timing was printed.",date,NA,NA
+13,toa,Time of admission,"The time when the patient was admitted in participating hospital in HH:MM format, rounded to closest 10 minutes",Recorded by project officer from patient record,"This is an administrative timing, i.e. the date is the date printed on the patient record. The patient may however have been admitted before this timing was printed.",time,NA,NA
+14,moi,Mechanism of injury,The mechanism of injury,"Recorded by project officer from patient record, health care staff, or by asking the patient or any of his/her relatives",The subcategories of Road traffic injury was applied differently across hospitals why we highly recommended to carefully inspect the data before placing to much emphasis on the subcategories. An alternative approach may be to collate the subcategories into a single Road traffic injury category,qualitative,"""Assault"" ""Burn"" ""Fall"" ""Other"" ""Railway injury"" ""Road traffic injury (bicyclist)"" ""Road traffic injury (driver)"" ""Road traffic injury (motorcyclist)"" ""Road traffic injury (passenger)"" ""Road traffic injury (pedestrian)"" ""Road traffic injury (unspecified)""",NA
+15,mot,Mode of transport,Describes how the patient was transported to participating hospital,"Recorded by project officer from patient record, health care staff, or by asking the patient or any of his/her relatives",NA,qualitative,"""Ambulance"" ""Carried by man"" ""Other"" ""Police"" ""Private car"" ""Taxi, motor rickshaw""",NA
+16,ti,Type of injury,Describes whether the injury was blund or penetrating,Recorded by project officer from patient record or by asking the health care staff,NA,qualitative,"""Blunt"" ""Penetrating""",NA
+17,aw,Arrived walking,Describes whether the patient arrived walking,Recorded by project officer from patient record or by asking the patient or any of his/her relatives,NA,qualitative,"""No"" ""Yes""",NA
+18,sbp_1,"Systolic blood pressure, first recording",The first recording of the patient's systolic blood pressure after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,0 if too low to be recordable,quantitative,NA,NA
+19,spo2_1,"Blood oxygen saturation, first recording",The first recording of the patient's blood oxygen saturation after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,0 if too low to be recordable,quantitative,NA,NA
+20,spo2_o2_1,Patient on supplemental oxygen when the first blood oxygen saturation was recorded,Describes whether the patient received supplemental oxygen when the first blood oxygen saturation was recorded after arrival,Recorded by project officer from patient record or by asking the health care staff to record and report,NA,qualitative,NA,NA
+21,rr_1,"Respiratory rate, first recording",The first recording of the patient's respiratory rate after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,0 if patient was gasping,quantitative,NA,NA
+22,hr_1,"Heart rate, first recording",The first recording of the patient's heart rate after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,0 if feeble or not palpable.,quantitative,NA,NA
+23,gcs_t_1,"Glasgow coma scale, total, first recording",The first recording of the patient's summed Glasgow coma scale after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,NA,quantitative,NA,NA
+24,gcs_e_1,"Glasgow coma scale, eye component, first recording",The first recording of the patient's eye component of the Glasgow coma scale after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,1c if 1 due to swelling/paralysis,qualitative,"""1"" ""1c"" ""2"" ""3"" ""4""",NA
+25,gcs_v_1,"Glasgow coma scale, verbal component, first recording",The first recording of the patient's verbal component of the Glasgow coma scale after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,1t if 1 due to intubation,qualitative,"""1"" ""1v"" ""2"" ""3"" ""4"" ""5""",NA
+26,gcs_m_1,"Glasgow coma scale, motor component, first recording",The first recording of the patient's motor component of the Glasgow coma scale after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,NA,qualitative,"""1"" ""2"" ""3"" ""4"" ""5"" ""6""",NA
+27,dom_1,Date of first recording,The date in Y-M-D format when the first recording of vital signs after the patient arrived to participating hospital was done,Recorded by project officer from patient record or by direct observation,NA,date,NA,NA
+28,tom_1,Time of first recording,"The time in HH:MM format, rounded to closest 10 minutes, when the first recording of vital signs after the patient arrived to participating hospital was done",Recorded by project officer from patient record or by direct observation,NA,time,NA,NA
+29,sbp_2,"Systolic blood pressure, second recording",The second recording of the patient's systolic blood pressure after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,0 if too low to be recordable,quantitative,NA,NA
+30,spo2_2,"Blood oxygen saturation, second recording",The second recording of the patient's blood oxygen saturation after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,0 if too low to be recordable,quantitative,NA,NA
+31,spo2_o2_2,Patient on supplemental oxygen when the second blood oxygen saturation was recorded,Describes whether the patient received supplemental oxygen when the second blood oxygen saturation was recorded after arrival,Recorded by project officer from patient record or by asking the health care staff to record and report,NA,qualitative,NA,NA
+32,rr_2,"Respiratory rate, second recording",The second recording of the patient's respiratory rate after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,0 if patient was gasping,quantitative,NA,NA
+33,hr_2,"Heart rate, second recording",The second recording of the patient's heart rate after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,0 if feeble or not palpable.,quantitative,NA,NA
+34,gcs_t_2,"Glasgow coma scale, total, second recording",The second recording of the patient's summed Glasgow coma scale after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,NA,quantitative,NA,NA
+35,gcs_e_2,"Glasgow coma scale, eye component, second recording",The second recording of the patient's eye component of the Glasgow coma scale after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,1c if 1 due to swelling/paralysis,qualitative,"""1"" ""1c"" ""2"" ""3"" ""4""",NA
+36,gcs_v_2,"Glasgow coma scale, verbal component, second recording",The second recording of the patient's verbal component of the Glasgow coma scale after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,1t if 1 due to intubation,qualitative,"""1"" ""1v"" ""2"" ""3"" ""4"" ""5""",NA
+37,gcs_m_2,"Glasgow coma scale, motor component, second recording",The second recording of the patient's motor component of the Glasgow coma scale after arrival to participating hospital,Recorded by project officer from patient record or by asking the health care staff to record and report,NA,qualitative,"""1"" ""2"" ""3"" ""4"" ""5"" ""6""",NA
+38,dom_2,Date of second recording,The date in Y-M-D format when the second recording of vital signs after the patient arrived to participating hospital was done,Recorded by project officer from patient record or by direct observation,This timing refer to the second documented vital signs recording extracted by the project officer. There might have been other recordings before this recording and should therefore not be used to calculate for example the time between vital signs recordings,date,NA,NA
+39,tom_2,Time of second recording,"The time in HH:MM format, rounded to closest 10 minutes, when the second recording of vital signs after the patient arrived to participating hospital was done",Recorded by project officer from patient record or by direct observation,This timing refer to the second documented vital signs recording extracted by the project officer. There might have been other recordings before this recording and should therefore not be used to calculate for example the time between vital signs recordings,time,NA,NA
+40,intub_1,Intubation within one hour,Describes whether the patient was intubated within one hour of arriving to participating hospital,Recorded by project officer from patient record,NA,qualitative,"""Before arrival"" ""No"" ""Yes""",NA
+41,saw_1,Surgical airway within one hour,Describes whether the patient received a surgical airway within one hour of arriving to participating hospital,Recorded by project officer from patient record,NA,qualitative,"""Before arrival"" ""No"" ""Yes""",NA
+42,icd_1,Intercostal drain within one hour,Describes whether the patient received an intercostal drain within one hour of arriving to participating hospital,Recorded by project officer from patient record,NA,qualitative,"""Before arrival"" ""No"" ""Yes""",NA
+43,ot_1,Taken to the operation theatre within one hour,Describes whether the patient was taken to the operation theatre within one hour of arriving to participating hospital,Recorded by project officer from patient record,NA,qualitative,"""No"" ""Yes""",NA
+44,ubr_1,Units of packed red blood cells transferred within one hour,The number of units of packed red blood cells transferred within one hour of arriving to participating hospital,Recorded by project officer from patient record,NA,quantitative,NA,NA
+45,intub_1_24,Intubation between one and twenty four hours,Describes whether the patient was intubated between one and twenty four hours of arriving to participating hospital,Recorded by project officer from patient record,NA,qualitative,"""No"" ""Yes""",NA
+46,saw_1_24,Surgical airway between one and twenty four hours,Describes whether the patient received a surgical airway between one and twenty four hours of arriving to participating hospital,Recorded by project officer from patient record,NA,qualitative,"""No"" ""Yes""",NA
+47,icd_1_24,Intercostal drain between one and twenty four hours,Describes whether the patient received an intercostal drain between one and twenty four hours of arriving to participating hospital,Recorded by project officer from patient record,NA,qualitative,"""No"" ""Yes""",NA
+48,ot_1_24,Taken to the operation theatre between one and twenty four hours,Describes whether the patient was taken to the operation theatre between one and twenty four hours of arriving to participating hospital,Recorded by project officer from patient record,NA,qualitative,"""No"" ""Yes""",NA
+49,ubr_1_24,Units of packed red blood cells transferred between one and twenty four hours,The number of units of packed red blood cells transferred between one and twenty four hours of arriving to participating hospital,Recorded by project officer from patient record,NA,quantitative,NA,NA
+50,tos,Type of surgery,The type of surgery performed,Recorded by project officer from patient record,Surgery was here defined as any procedure performed under general or regional anesthesia. 0 denotes no surgery.,text,NA,NA
+51,losu,Length of surgery,"The lenght of surgery, in hours, rounded up to closest whole hour",Recorded by project officer from patient record,0 denotes no surgery,quantitative,NA,NA
+52,sbp_s,Systolic blood pressure at start of surgery,The patient's systolic blood pressure recorded at start of surgery,Recorded by project officer from patient record,NA,quantitative,NA,NA
+53,ct,Computed tomography,Describes whether the patient underwent a computed tomography within 24 hours of arrival to participating hospital,Recorded by project officer from patient record,NA,qualitative,"""No"" ""Yes""",NA
+54,fast,Focused assessment with sonography in trauma,Describes whether the patient underwent focused assessment with sonography in trauma within 24 hours of arrival to participating hospital,Recorded by project officer from patient record,NA,qualitative,"""No"" ""Yes""",NA
+55,xray,X-ray,Describes whether the patient had an x-ray done  within 24 hours of arrival to participating hospital,Recorded by project officer from patient record,NA,qualitative,"""No"" ""Yes""",NA
+56,doct,Date of computed tomography,The date in Y-M-D format when the computed tomography was done,Recorded by project officer from patient record,NA,date,NA,NA
+57,toct,Time of computed tomography,The time in HH:MM format when the computed tomography was done,Recorded by project officer from patient record,NA,time,NA,NA
+58,hb,Hemoglobin,The first hemoglobin drawn within 24 hours of arriving to participating hospital,Recorded by project officer from patient record,NA,quantitative,NA,NA
+59,hc,Hematocrit,The first hematocrit drawn within 24 hours of arriving to participating hospital,Recorded by project officer from patient record,NA,quantitative,NA,NA
+60,bgl,Blood glucose level,The first blood glucose level recorded within 24 hours of arriving to participating hospital,Recorded by project officer from patient record,NA,quantitative,NA,NA
+61,sc,Serum creatinine,The first serum creatinine recorded within 24 hours of arriving to participating hospital,Recorded by project officer from patient record,NA,quantitative,NA,NA
+62,bun,Blood urea nitrogen,The first blood urea nitrogen recorded within 24 hours of arriving to participating hospital,Recorded by project officer from patient record,NA,quantitative,NA,NA
+63,lov,Length of ventilation,"The length of ventilation, rounded up to closest whole hour",Recorded by project officer from patient record,0 if not ventilated,quantitative,NA,NA
+64,licu,Length of intensive care unit staty,"The length of stay in the intensive care unit, rounded up to closest whole hour",Recorded by project officer from patient record,0 if no intensive care unit stay,quantitative,NA,NA
+65,died,Patient died,Describes whether the patient died in hospital,Recorded by project officer from patient record,NA,qualitative,"""No"" ""Yes""",NA
+66,dodd,Date of death or discharge,The date when the patient died or was discharged in Y-M-D format,Recorded by project officer from patient record,NA,date,NA,NA
+67,todd,Time of death or discharge,The time when the patient died or was discharged in HH:MM format,Recorded by project officer from patient record,NA,time,NA,NA
+68,dama,Discharged against medical advice,Describes whether the patient was discharged against medical advice or absconded,Recorded by project officer from patient record,NA,qualitative,"""No"" ""Yes""",NA
+69,e_1,External injury 1,External injury 1,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+70,e_2,External injury 2,External injury 2,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+71,e_3,External injury 3,External injury 3,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+72,e_4,External injury 4,External injury 4,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+73,e_5,External injury 5,External injury 5,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+74,e_6,External injury 6,External injury 6,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+75,e_7,External injury 7,External injury 7,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+76,e_8,External injury 8,External injury 8,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+77,e_9,External injury 9,External injury 9,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+78,e_10,External injury 10,External injury 10,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+79,e_11,External injury 11,External injury 11,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+80,e_12,External injury 12,External injury 12,"Recorded by project officer from patient record, physician notes",text,text,NA,NA
+81,xray_1,X-ray injury 1,Injury from X-ray report 1,"Recorded by project officer from patient record, physician notes or X-ray report",text,text,NA,NA
+82,xray_2,X-ray injury 2,Injury from X-ray report 2,"Recorded by project officer from patient record, physician notes or X-ray report",text,text,NA,NA
+83,xray_3,X-ray injury 3,Injury from X-ray report 3,"Recorded by project officer from patient record, physician notes or X-ray report",text,text,NA,NA
+84,xray_4,X-ray injury 4,Injury from X-ray report 4,"Recorded by project officer from patient record, physician notes or X-ray report",text,text,NA,NA
+85,xray_5,X-ray injury 5,Injury from X-ray report 5,"Recorded by project officer from patient record, physician notes or X-ray report",text,text,NA,NA
+86,xray_6,X-ray injury 6,Injury from X-ray report 6,"Recorded by project officer from patient record, physician notes or X-ray report",text,text,NA,NA
+87,xray_7,X-ray injury 7,Injury from X-ray report 7,"Recorded by project officer from patient record, physician notes or X-ray report",text,text,NA,NA
+88,xray_8,X-ray injury 8,Injury from X-ray report 8,"Recorded by project officer from patient record, physician notes or X-ray report",text,text,NA,NA
+89,xray_9,X-ray injury 9,Injury from X-ray report 9,"Recorded by project officer from patient record, physician notes or X-ray report",text,text,NA,NA
+90,xray_10,X-ray injury 10,Injury from X-ray report 10,"Recorded by project officer from patient record, physician notes or X-ray report",text,text,NA,NA
+91,xray_11,X-ray injury 11,Injury from X-ray report 11,"Recorded by project officer from patient record, physician notes or X-ray report",text,text,NA,NA
+92,fast_1,FAST injury 1,Injury from FAST report 1,"Recorded by project officer from patient record, physician notes or ultrasonography report",text,text,NA,NA
+93,fast_2,FAST injury 2,Injury from FAST report 2,"Recorded by project officer from patient record, physician notes or ultrasonography report",text,text,NA,NA
+94,fast_3,FAST injury 3,Injury from FAST report 3,"Recorded by project officer from patient record, physician notes or ultrasonography report",text,text,NA,NA
+95,fast_4,FAST injury 4,Injury from FAST report 4,"Recorded by project officer from patient record, physician notes or ultrasonography report",text,text,NA,NA
+96,fast_5,FAST injury 5,Injury from FAST report 5,"Recorded by project officer from patient record, physician notes or ultrasonography report",text,text,NA,NA
+97,fast_6,FAST injury 6,Injury from FAST report 6,"Recorded by project officer from patient record, physician notes or ultrasonography report",text,text,NA,NA
+98,fast_7,FAST injury 7,Injury from FAST report 7,"Recorded by project officer from patient record, physician notes or ultrasonography report",text,text,NA,NA
+99,fast_8,FAST injury 8,Injury from FAST report 8,"Recorded by project officer from patient record, physician notes or ultrasonography report",text,text,NA,NA
+100,fast_9,FAST injury 9,Injury from FAST report 9,"Recorded by project officer from patient record, physician notes or ultrasonography report",text,text,NA,NA
+101,fast_10,FAST injury 10,Injury from FAST report 10,"Recorded by project officer from patient record, physician notes or ultrasonography report",text,text,NA,NA
+102,fast_11,FAST injury 11,Injury from FAST report 11,"Recorded by project officer from patient record, physician notes or ultrasonography report",text,text,NA,NA
+103,ct_1,CT injury 1,Injury from CT report 1,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+104,ct_2,CT injury 2,Injury from CT report 2,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+105,ct_3,CT injury 3,Injury from CT report 3,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+106,ct_4,CT injury 4,Injury from CT report 4,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+107,ct_5,CT injury 5,Injury from CT report 5,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+108,ct_6,CT injury 6,Injury from CT report 6,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+109,ct_7,CT injury 7,Injury from CT report 7,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+110,ct_8,CT injury 8,Injury from CT report 8,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+111,ct_9,CT injury 9,Injury from CT report 9,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+112,ct_10,CT injury 10,Injury from CT report 10,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+113,ct_11,CT injury 11,Injury from CT report 11,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+114,ct_12,CT injury 12,Injury from CT report 12,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+115,ct_13,CT injury 13,Injury from CT report 13,"Recorded by project officer from patient record, physician notes or CT report",text,text,NA,NA
+116,op_1,Intraoperative finding of injury 1,Injury from intraoperative report 1,"Recorded by project officer from patient record, physician intraoperative notes",text,text,NA,NA
+117,op_2,Intraoperative finding of injury 2,Injury from intraoperative report 2,"Recorded by project officer from patient record, physician intraoperative notes",text,text,NA,NA
+118,op_3,Intraoperative finding of injury 3,Injury from intraoperative report 3,"Recorded by project officer from patient record, physician intraoperative notes",text,text,NA,NA
+119,op_4,Intraoperative finding of injury 4,Injury from intraoperative report 4,"Recorded by project officer from patient record, physician intraoperative notes",text,text,NA,NA
+120,op_5,Intraoperative finding of injury 5,Injury from intraoperative report 5,"Recorded by project officer from patient record, physician intraoperative notes",text,text,NA,NA
+121,op_6,Intraoperative finding of injury 6,Injury from intraoperative report 6,"Recorded by project officer from patient record, physician intraoperative notes",text,text,NA,NA
+122,op_7,Intraoperative finding of injury 7,Injury from intraoperative report 7,"Recorded by project officer from patient record, physician intraoperative notes",text,text,NA,NA
+123,op_8,Intraoperative finding of injury 8,Injury from intraoperative report 8,"Recorded by project officer from patient record, physician intraoperative notes",text,text,NA,NA
+124,op_9,Intraoperative finding of injury 9,Injury from intraoperative report 9,"Recorded by project officer from patient record, physician intraoperative notes",text,text,NA,NA
+125,op_10,Intraoperative finding of injury 10,Injury from intraoperative report 10,"Recorded by project officer from patient record, physician intraoperative notes",text,text,NA,NA
+126,op_11,Intraoperative finding of injury 11,Injury from intraoperative report 11,"Recorded by project officer from patient record, physician intraoperative notes",text,text,NA,NA
+127,head_and_neck,Head and neck AIS severity codes,Injury severities to the head and neck region according to the abbreviated injury scale (AIS),Assigned by a single certified AIS coder based on the injury strings available in e_1-ot_11,text,text,NA,NA
+128,face,Face AIS severity codes,Injury severities to the face region according to the abbreviated injury scale (AIS),Assigned by a single certified AIS coder based on the injury strings available in e_1-ot_11,text,text,NA,NA
+129,chest,Chest AIS severity codes,Injury severities to the chest region according to the abbreviated injury scale (AIS),Assigned by a single certified AIS coder based on the injury strings available in e_1-ot_11,text,text,NA,NA
+130,abdomen_and_pelvic_contents,Abdomen and pelvic contents AIS severity codes,Injury severities to the abdomen and pelvic contents region according to the abbreviated injury scale (AIS),Assigned by a single certified AIS coder based on the injury strings available in e_1-ot_11,text,text,NA,NA
+131,extremities,Extremities AIS severity codes,Injury severities to the extremities region according to the abbreviated injury scale (AIS),Assigned by a single certified AIS coder based on the injury strings available in e_1-ot_11,text,text,NA,NA
+132,external,External AIS severity codes,Injury severities to the external region according to the abbreviated injury scale (AIS),Assigned by a single certified AIS coder based on the injury strings available in e_1-ot_11,text,text,NA,NA
+133,iss,Injury severity score,The injury severity score,Assigned by a single certified AIS coder based on the injury strings available in e_1-ot_11,quantitative,quantitative,NA,NA
+134,niss,New injury severity score,The new injury severity score,Assigned by a single certified AIS coder based on the injury strings available in e_1-ot_11,quantitative,quantitative,NA,NA
+135,e_1_icd,External injury 1 ICD-10 code,External injury 1 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+136,e_2_icd,External injury 2 ICD-10 code,External injury 2 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+137,e_3_icd,External injury 3 ICD-10 code,External injury 3 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+138,e_4_icd,External injury 4 ICD-10 code,External injury 4 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+139,e_5_icd,External injury 5 ICD-10 code,External injury 5 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+140,e_6_icd,External injury 6 ICD-10 code,External injury 6 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+141,e_7_icd,External injury 7 ICD-10 code,External injury 7 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+142,e_8_icd,External injury 8 ICD-10 code,External injury 8 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+143,e_9_icd,External injury 9 ICD-10 code,External injury 9 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+144,e_10_icd,External injury 10 ICD-10 code,External injury 10 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+145,e_11_icd,External injury 11 ICD-10 code,External injury 11 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+146,e_12_icd,External injury 12 ICD-10 code,External injury 12 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+147,xray_1_icd,X-ray injury 1 ICD-10 code,Injury from X-ray report 1 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+148,xray_2_icd,X-ray injury 2 ICD-10 code,Injury from X-ray report 2 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+149,xray_3_icd,X-ray injury 3 ICD-10 code,Injury from X-ray report 3 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+150,xray_4_icd,X-ray injury 4 ICD-10 code,Injury from X-ray report 4 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+151,xray_5_icd,X-ray injury 5 ICD-10 code,Injury from X-ray report 5 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+152,xray_6_icd,X-ray injury 6 ICD-10 code,Injury from X-ray report 6 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+153,xray_7_icd,X-ray injury 7 ICD-10 code,Injury from X-ray report 7 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+154,xray_8_icd,X-ray injury 8 ICD-10 code,Injury from X-ray report 8 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+155,xray_9_icd,X-ray injury 9 ICD-10 code,Injury from X-ray report 9 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+156,xray_10_icd,X-ray injury 10 ICD-10 code,Injury from X-ray report 10 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+157,xray_11_icd,X-ray injury 11 ICD-10 code,Injury from X-ray report 11 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+158,fast_1_icd,FAST injury 1 ICD-10 code,Injury from FAST report 1 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+159,fast_2_icd,FAST injury 2 ICD-10 code,Injury from FAST report 2 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+160,fast_3_icd,FAST injury 3 ICD-10 code,Injury from FAST report 3 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+161,fast_4_icd,FAST injury 4 ICD-10 code,Injury from FAST report 4 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+162,fast_5_icd,FAST injury 5 ICD-10 code,Injury from FAST report 5 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+163,fast_6_icd,FAST injury 6 ICD-10 code,Injury from FAST report 6 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+164,fast_7_icd,FAST injury 7 ICD-10 code,Injury from FAST report 7 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+165,fast_8_icd,FAST injury 8 ICD-10 code,Injury from FAST report 8 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+166,fast_9_icd,FAST injury 9 ICD-10 code,Injury from FAST report 9 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+167,fast_10_icd,FAST injury 10 ICD-10 code,Injury from FAST report 10 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+168,fast_11_icd,FAST injury 11 ICD-10 code,Injury from FAST report 11 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+169,ct_1_icd,CT injury 1 ICD-10 code,Injury from CT report 1 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+170,ct_2_icd,CT injury 2 ICD-10 code,Injury from CT report 2 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+171,ct_3_icd,CT injury 3 ICD-10 code,Injury from CT report 3 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+172,ct_4_icd,CT injury 4 ICD-10 code,Injury from CT report 4 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+173,ct_5_icd,CT injury 5 ICD-10 code,Injury from CT report 5 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+174,ct_6_icd,CT injury 6 ICD-10 code,Injury from CT report 6 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+175,ct_7_icd,CT injury 7 ICD-10 code,Injury from CT report 7 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+176,ct_8_icd,CT injury 8 ICD-10 code,Injury from CT report 8 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+177,ct_9_icd,CT injury 9 ICD-10 code,Injury from CT report 9 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+178,ct_10_icd,CT injury 10 ICD-10 code,Injury from CT report 10 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+179,ct_11_icd,CT injury 11 ICD-10 code,Injury from CT report 11 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+180,ct_12_icd,CT injury 12 ICD-10 code,Injury from CT report 12 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+181,ct_13_icd,CT injury 13 ICD-10 code,Injury from CT report 13 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+182,op_1_icd,Intraoperative finding of injury 1 ICD-10 code,Injury from intraoperative report 1 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+183,op_2_icd,Intraoperative finding of injury 2 ICD-10 code,Injury from intraoperative report 2 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+184,op_3_icd,Intraoperative finding of injury 3 ICD-10 code,Injury from intraoperative report 3 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+185,op_4_icd,Intraoperative finding of injury 4 ICD-10 code,Injury from intraoperative report 4 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+186,op_5_icd,Intraoperative finding of injury 5 ICD-10 code,Injury from intraoperative report 5 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+187,op_6_icd,Intraoperative finding of injury 6 ICD-10 code,Injury from intraoperative report 6 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+188,op_7_icd,Intraoperative finding of injury 7 ICD-10 code,Injury from intraoperative report 7 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+189,op_8_icd,Intraoperative finding of injury 8 ICD-10 code,Injury from intraoperative report 8 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+190,op_9_icd,Intraoperative finding of injury 9 ICD-10 code,Injury from intraoperative report 9 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+191,op_10_icd,Intraoperative finding of injury 10 ICD-10 code,Injury from intraoperative report 10 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+192,op_11_icd,Intraoperative finding of injury 11 ICD-10 code,Injury from intraoperative report 11 ICD-10 code,Assigned by one of three medical students after completing the World Health Organization's online training course,text,text,NA,NA
+193,seqn,Sequential number,NA,Assigned during de-identification based on the original date and time of arrival,quantitative,quantitative,NA,NA
+194,delay2ifdirect,delay2ifdirect,NA,NA,NA,quantitative,NA,NA
+195,rts_sbp1,revised trauma score sbp1,NA,NA,NA,quantitative,NA,NA
+196,rts_sbp2,revised trauma score sbp2,NA,NA,NA,quantitative,NA,NA
+197,rts_rr1,revised trauma score rr1,NA,NA,NA,quantitative,NA,NA
+198,rts_rr2,revised trauma score rr2,NA,NA,NA,quantitative,NA,NA
+199,ambulancefromthescene,ambulancefromthescene,NA,NA,NA,qualitative,NA,NA
+200,tranclass,tranclass,NA,NA,NA,qualitative,NA,NA
+201,bl_rec,blood received 1st hour,NA,NA,NA,qualitative,NA,NA
+202,sc_hi,serum creatinine high,NA,NA,NA,qualitative,NA,NA
+203,gcs_v_1_class,gcs_v_1_class,NA,NA,NA,qualitative,NA,NA
+204,gcs_m_1_class,gcs_m_1_class,NA,NA,NA,qualitative,NA,NA
+205,gcs_e_1_class,gcs_e_1_class,NA,NA,NA,qualitative,NA,NA
+206,gcs_v_2_class,gcs_v_2_class,NA,NA,NA,qualitative,NA,NA
+207,gcs_m_2_class,gcs_m_2_class,NA,NA,NA,qualitative,NA,NA
+208,gcs_e_2_class,gcs_e_2_class,NA,NA,NA,qualitative,NA,NA
+209,spO2_1_wO2,spO2_1_wO2,NA,NA,NA,quantitative,NA,NA
+210,spO2_1_woO2,spO2_1_woO2,NA,NA,NA,quantitative,NA,NA
+211,spO2_2_wO2,spO2_2_wO2,NA,NA,NA,quantitative,NA,NA
+212,spO2_2_woO2,spO2_2_woO2,NA,NA,NA,quantitative,NA,NA
+213,spO2_1_cat,spO2_1_cat,NA,NA,NA,qualitative,NA,NA
+214,spO2_2_cat,spO2_2_cat,NA,NA,NA,qualitative,NA,NA
