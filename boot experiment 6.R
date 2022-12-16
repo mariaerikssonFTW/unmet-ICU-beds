@@ -484,15 +484,18 @@ unmet_function <- function(data, indices) {
   unneccesary_ICU=sum(question$unneccesary,na.rm=t)
   unnecessary_prop=unneccesary_ICU/ICUtest
   
-  return(unmetprop_test) #return unmet
+  ret=c(unmetprop_test,train_roc[["auc"]],unnecessary_prop, test_roc[["auc"]],youdens_test$specificity, youdens_test$sensitivity)
+  
+  return(ret) #return unmet
 }
 
 # #bootstrapping
-reps <- boot(data=data, statistic=unmet_function, R=200) # , formula=mpg~disp) fult
+repsret2000 <- boot(data=data, statistic=unmet_function, R=2000) 
 
 #repsAUC
 
-#save(repsAUC,file="repsAUC.rdata")
+
+save(repsret2000,file="repsret2000.rdata")
 
 # CI = boot.ci(reps)
 
